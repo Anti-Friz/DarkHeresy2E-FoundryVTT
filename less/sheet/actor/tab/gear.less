@@ -44,7 +44,12 @@
     overflow-y: scroll;
     max-height: 581px;
     height: 581px;
-    align-content: flex-start;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+}
+
+.dark-heresy .gear .all-gear::-webkit-scrollbar {
+    display: none;
 }
 
 .dark-heresy .gear .all-gear .item-list .header {
