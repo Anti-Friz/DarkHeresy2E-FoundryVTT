@@ -72,9 +72,9 @@
     "grid.units": "m",
     "primaryTokenAttribute": null,
     "secondaryTokenAttribute": null,
-    "url": "https://github.com/Vendare/DarkHeresy2E-FoundryVTT",
+    "url": "https://github.com/Anti-Friz/DarkHeresy2E-FoundryVTT",
     "socket": true,
-    "manifest": "https://github.com/Vendare/DarkHeresy2E-FoundryVTT/releases/download/4.3.2/system.json",
-    "download": "https://github.com/Vendare/DarkHeresy2E-FoundryVTT/releases/download/4.3.2/dark-heresy.zip",
+    "manifest": "https://github.com/Anti-Friz/DarkHeresy2E-FoundryVTT/releases/download/4.3.2af/system.json",
+    "download": "https://github.com/Anti-Friz/DarkHeresy2E-FoundryVTT/releases/download/4.3.2af/dark-heresy.zip",
     "license": "LICENSE.txt"
 }
