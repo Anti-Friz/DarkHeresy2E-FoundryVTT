@@ -310,12 +310,12 @@ export class DarkHeresyActor extends Actor {
         this.armour.leftLeg.value += cyberArmor.leftLeg;
         this.armour.rightLeg.value += cyberArmor.rightLeg;
 
-        this.armour.head.total = this.armour.head.value + this.armour.head.toughnessBonus
-        this.armour.leftArm.total = this.armour.leftArm.value + this.armour.leftArm.toughnessBonus
-        this.armour.rightArm.total = this.armour.rightArm.value + this.armour.rightArm.toughnessBonus
-        this.armour.body.total = this.armour.body.value + this.armour.body.toughnessBonus
-        this.armour.leftLeg.total = this.armour.leftLeg.value + this.armour.leftLeg.toughnessBonus
-        this.armour.rightLeg.total = this.armour.rightLeg.value + this.armour.rightLeg.toughnessBonus
+        this.armour.head.total = this.armour.head.value + this.armour.head.toughnessBonus;
+        this.armour.leftArm.total = this.armour.leftArm.value + this.armour.leftArm.toughnessBonus;
+        this.armour.rightArm.total = this.armour.rightArm.value + this.armour.rightArm.toughnessBonus;
+        this.armour.body.total = this.armour.body.value + this.armour.body.toughnessBonus;
+        this.armour.leftLeg.total = this.armour.leftLeg.value + this.armour.leftLeg.toughnessBonus;
+        this.armour.rightLeg.total = this.armour.rightLeg.value + this.armour.rightLeg.toughnessBonus;
 
 
     }

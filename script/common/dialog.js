@@ -1,10 +1,11 @@
-import { commonRoll, combatRoll, reportEmptyClip } from "./roll.js";
+import {commonRoll, combatRoll, reportEmptyClip} from "./roll.js";
 
 /**
  * Show a generic roll dialog.
  * @param {object} rollData
  */
-export async function prepareCommonRoll(rollData) {
+export async function prepareCommonRoll(rollData)
+{
     const html = await renderTemplate("systems/dark-heresy/template/dialog/common-roll.hbs", rollData);
     let dialog = new Dialog({
         title: game.i18n.localize(rollData.name),
@@ -13,14 +14,18 @@ export async function prepareCommonRoll(rollData) {
             roll: {
                 icon: '<i class="fas fa-check"></i>',
                 label: game.i18n.localize("BUTTON.ROLL"),
-                callback: async html => {
-                    if (rollData.flags?.isEvasion) {
+                callback: async html =>
+                {
+                    if (rollData.flags?.isEvasion)
+                    {
                         const skill = html.find("#selectedSkill")[0];
-                        if (skill) {
+                        if (skill)
+                        {
                             rollData.name = game.i18n.localize(skill.options[skill.selectedIndex].text);
                             rollData.evasions.selected = skill.value;
                         }
-                    } else {
+                    } else
+                    {
                         rollData.name = game.i18n.localize(rollData.name);
                         rollData.target.base = parseInt(html.find("#target")[0].value, 10);
                         rollData.rolledWith = html.find("[name=characteristic] :selected").text();
@@ -39,16 +44,18 @@ export async function prepareCommonRoll(rollData) {
             cancel: {
                 icon: '<i class="fas fa-times"></i>',
                 label: game.i18n.localize("BUTTON.CANCEL"),
-                callback: () => {}
+                callback: () => { }
             }
 
         },
         default: "roll",
-        close: () => {},
-        render: html => {
+        close: () => { },
+        render: html =>
+        {
             const sel = html.find("select[name=characteristic");
             const target = html.find("#target");
-            sel.change(() => {
+            sel.change(() =>
+            {
                 target.val(sel.val());
             });
         }
@@ -63,10 +70,13 @@ export async function prepareCommonRoll(rollData) {
  * @param {object} rollData
  * @param {DarkHeresyActor} actorRef
  */
-export async function prepareCombatRoll(rollData, actorRef) {
-    if (rollData.weapon.isRanged && rollData.weapon.clip.value <= 0) {
+export async function prepareCombatRoll(rollData, actorRef)
+{
+    if (rollData.weapon.isRanged && rollData.weapon.clip.value <= 0)
+    {
         reportEmptyClip(rollData);
-    } else {
+    } else
+    {
         const html = await renderTemplate("systems/dark-heresy/template/dialog/combat-roll.hbs", rollData);
         let dialog = new Dialog({
             title: rollData.name,
@@ -75,12 +85,14 @@ export async function prepareCombatRoll(rollData, actorRef) {
                 roll: {
                     icon: '<i class="fas fa-check"></i>',
                     label: game.i18n.localize("BUTTON.ROLL"),
-                    callback: async html => {
+                    callback: async html =>
+                    {
                         rollData.name = game.i18n.localize(rollData.name);
                         rollData.target.base = parseInt(html.find("#target")[0]?.value, 10);
                         rollData.target.modifier = parseInt(html.find("#modifier")[0]?.value, 10);
                         const range = html.find("#range")[0];
-                        if (range) {
+                        if (range)
+                        {
                             rollData.rangeMod = parseInt(range.value, 10);
                             rollData.rangeModText = range.options[range.selectedIndex].text;
                         }
@@ -99,9 +111,11 @@ export async function prepareCombatRoll(rollData, actorRef) {
                             text: aim?.options[aim.selectedIndex].text
                         };
 
-                        if (rollData.weapon.traits.inaccurate) {
-                            rollData.aim.val=0;
-                        } else if (rollData.weapon.traits.accurate && rollData.aim.isAiming) {
+                        if (rollData.weapon.traits.inaccurate)
+                        {
+                            rollData.aim.val = 0;
+                        } else if (rollData.weapon.traits.accurate && rollData.aim.isAiming)
+                        {
                             rollData.aim.val += 10;
                         }
 
@@ -112,7 +126,8 @@ export async function prepareCombatRoll(rollData, actorRef) {
                         rollData.flags.isDamageRoll = false;
                         rollData.flags.isCombatRoll = true;
 
-                        if (rollData.weapon.traits.skipAttackRoll) {
+                        if (rollData.weapon.traits.skipAttackRoll)
+                        {
                             rollData.attackType.name = "standard";
                         }
 
@@ -122,12 +137,14 @@ export async function prepareCombatRoll(rollData, actorRef) {
                 cancel: {
                     icon: '<i class="fas fa-times"></i>',
                     label: game.i18n.localize("BUTTON.CANCEL"),
-                    callback: () => {}
+                    callback: () => { }
                 }
             },
             default: "roll",
-            close: () => {}
-        }, {width: 200});
+            close: () => { }
+        }, {
+            width: 200
+        });
         dialog.render(true);
     }
 }
@@ -136,7 +153,8 @@ export async function prepareCombatRoll(rollData, actorRef) {
  * Show a psychic power roll dialog.
  * @param {object} rollData
  */
-export async function preparePsychicPowerRoll(rollData) {
+export async function preparePsychicPowerRoll(rollData)
+{
     const html = await renderTemplate("systems/dark-heresy/template/dialog/psychic-power-roll.hbs", rollData);
     let dialog = new Dialog({
         title: rollData.name,
@@ -145,7 +163,8 @@ export async function preparePsychicPowerRoll(rollData) {
             roll: {
                 icon: '<i class="fas fa-check"></i>',
                 label: game.i18n.localize("BUTTON.ROLL"),
-                callback: async html => {
+                callback: async html =>
+                {
                     rollData.name = game.i18n.localize(rollData.name);
                     rollData.target.base = parseInt(html.find("#target")[0]?.value, 10);
                     rollData.target.modifier = parseInt(html.find("#modifier")[0]?.value, 10);
@@ -155,7 +174,10 @@ export async function preparePsychicPowerRoll(rollData) {
                     rollData.weapon.damageType = html.find("#damageType")[0].value;
                     rollData.weapon.damageBonus = parseInt(html.find("#damageBonus")[0].value, 10);
                     rollData.weapon.penetrationFormula = html.find("#penetration")[0].value;
-                    rollData.weapon.rateOfFire = { burst: rollData.psy.value, full: rollData.psy.value };
+                    rollData.weapon.rateOfFire = {
+                        burst: rollData.psy.value,
+                        full: rollData.psy.value
+                    };
                     const attackType = html.find("#attackType")[0];
                     rollData.attackType.name = attackType.value;
                     rollData.attackType.text = attackType.options[attackType.selectedIndex].text;
@@ -168,11 +190,13 @@ export async function preparePsychicPowerRoll(rollData) {
             cancel: {
                 icon: '<i class="fas fa-times"></i>',
                 label: game.i18n.localize("BUTTON.CANCEL"),
-                callback: () => {}
+                callback: () => { }
             }
         },
         default: "roll",
-        close: () => {}
-    }, {width: 200});
+        close: () => { }
+    }, {
+        width: 200
+    });
     dialog.render(true);
 }

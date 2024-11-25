@@ -255,7 +255,7 @@ export class DarkHeresyItem extends Item {
 
     get isCybernetic() { return this.type === "cybernetic"; }
 
-    get isCArmor() { return this.system.isCArmor }
+    get isCArmor() { return this.system.isCArmor; }
 
     get isWeaponModification() { return this.type === "weaponModification"; }
 
