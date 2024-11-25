@@ -68,8 +68,8 @@
             "path": "lang/pl.json"
         }
     ],
-    "gridDistance": 1,
-    "gridUnits": "m",
+    "grid.distance": 1,
+    "grid.units": "m",
     "primaryTokenAttribute": null,
     "secondaryTokenAttribute": null,
     "url": "https://github.com/Vendare/DarkHeresy2E-FoundryVTT",
