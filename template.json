@@ -2,9 +2,7 @@
     "Actor": {
         "types": [
             "acolyte",
-            "npc",
-            "vehicle",
-            "starship"
+            "npc"
         ],
         "templates": {
             "characteristics": {
@@ -389,6 +387,12 @@
                                 "advance": -20,
                                 "starter": false,
                                 "cost": 0
+                            },
+                            "Infused Knowledge": {
+                                "label": "Infused Knowledge",
+                                "advance": -20,
+                                "starter": false,
+                                "cost": 0
                             }
                         }
                     },
@@ -642,6 +646,12 @@
                             },
                             "calixisSector": {
                                 "label": "Calixis Sector",
+                                "advance": -20,
+                                "starter": false,
+                                "cost": 0
+                            },
+                            "vertexSubSector": {
+                                "label": "Vertex SubSector",
                                 "advance": -20,
                                 "starter": false,
                                 "cost": 0
@@ -1142,6 +1152,18 @@
                                 "advance": -20,
                                 "starter": false,
                                 "cost": 0
+                            },
+                            "vertexSubSector": {
+                                "label": "Vertex SubSector",
+                                "advance": -20,
+                                "starter": false,
+                                "cost": 0
+                            },
+                            "Infused Knowledge": {
+                                "label": "Infused Knowledge",
+                                "advance": -20,
+                                "starter": false,
+                                "cost": 0
                             }
                         }
                     },
@@ -1461,12 +1483,6 @@
             "threatLevel": 0,
             "size": 4,
             "notes": ""
-        },
-        "vehicle": {
-
-        },
-        "starship": {
-
         }
     },
     "Item": {
