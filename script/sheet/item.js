@@ -14,7 +14,10 @@ export class DarkHeresyItemSheet extends ItemSheet {
     async _handleEnrichment() {
         let enrichment ={};
         enrichment["system.description"] = await TextEditor.enrichHTML(this.item.system.description, {async: true});
-        enrichment["system.effect"] = await TextEditor.enrichHTML(this.item.system.effect, {async: true});
+        enrichment["system.effect"] = await TextEditor.enrichHTML(this.item.system.effect, { async: true });
+        enrichment["system.benefit"] = await TextEditor.enrichHTML(this.item.system.benefit, { async: true });
+        enrichment["system.shortDescription"] = await TextEditor.enrichHTML(this.item.system.shortDescription, { async: true });
+        enrichment["system.special"] = await TextEditor.enrichHTML(this.item.system.special, { async: true });
         return foundry.utils.expandObject(enrichment);
     }
 

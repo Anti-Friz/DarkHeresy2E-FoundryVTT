@@ -26,9 +26,9 @@
                     <div class="stat installed">
                         <label>{{localize "CYBERNETIC.INSTALLED"}}</label>
                         {{#if system.installed}}
-                            <input name="system.installed" type="checkbox" value="installed" checked/>
+                        <input name="system.installed" type="checkbox" value="installed" checked />
                         {{else}}
-                            <input name="system.installed" type="checkbox" value="installed"/>
+                        <input name="system.installed" type="checkbox" value="installed" />
                         {{/if}}
                     </div>
                 </div>
@@ -45,9 +45,73 @@
                             {{selectOptions (config "availability") selected=system.availability localize=true}}
                         </select>
                     </div>
+                    <div class="stat part">
+                        <label>{{localize "ARMOUR.IS_ADDITIVE"}}</label>
+                        <input name="system.isAdditive" type="checkbox" {{checked system.isArmor}} />
+                    </div>
                     <div class="stat weight">
                         <label>{{localize "CYBERNETIC.WEIGHT"}}</label>
                         <input name="system.weight" type="number" value="{{system.weight}}" data-dtype="Number" />
+                    </div>
+                </div>
+                <h2>{{localize "CYBERNETIC.CYBERARMOR"}}</h2>
+                <div class="stats-row" style="justify-content: space-evenly">
+                    <div class="stats-row" style="justify-content: space-evenly">
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.LEFT_ARM"}}</label>
+                            <input name="system.part.leftArm" type="number" value="{{system.part.leftArm}}" data-dtype="Number" />
+                        </div>
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.HEAD"}}</label>
+                            <input name="system.part.head" type="number" value="{{system.part.head}}" data-dtype="Number" />
+                        </div>
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.RIGHT_ARM"}}</label>
+                            <input name="system.part.rightArm" type="number" value="{{system.part.rightArm}}" data-dtype="Number" />
+                        </div>
+                    </div>
+                    <div class="stats-row" style="justify-content: space-evenly">
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.LEFT_LEG"}}</label>
+                            <input name="system.part.leftLeg" type="number" value="{{system.part.leftLeg}}" data-dtype="Number" />
+                        </div>
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.BODY"}}</label>
+                            <input name="system.part.body" type="number" value="{{system.part.body}}" data-dtype="Number" />
+                        </div>
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.RIGHT_LEG"}}</label>
+                            <input name="system.part.rightLeg" type="number" value="{{system.part.rightLeg}}" data-dtype="Number" />
+                        </div>
+                    </div>
+                    <h2>{{localize "CYBERNETIC.INSTALLEDIN"}}</h2>
+                    <div class="stats-row" style="justify-content: space-evenly">
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.LEFT_ARM"}}</label>
+                            <input name="system.installedIn.leftArm" {{checked system.installedIn.leftArm}} type="checkbox" />
+                        </div>
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.HEAD"}}</label>
+                            <input name="system.installedIn.head" {{checked system.installedIn.head}} type="checkbox" />
+                        </div>
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.RIGHT_ARM"}}</label>
+                            <input name="system.installedIn.rightArm" {{checked system.installedIn.rightArm}} type="checkbox" />
+                        </div>
+                    </div>
+                    <div class="stats-row" style="justify-content: space-evenly">
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.LEFT_LEG"}}</label>
+                            <input name="system.installedIn.leftLeg" {{checked system.installedIn.leftLeg}} type="checkbox" />
+                        </div>
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.BODY"}}</label>
+                            <input name="system.installedIn.body" {{checked system.installedIn.body}} type="checkbox" />
+                        </div>
+                        <div class="stat part">
+                            <label>{{localize "ARMOUR.RIGHT_LEG"}}</label>
+                            <input name="system.installedIn.rightLeg" {{checked system.installedIn.rightLeg}} type="checkbox" />
+                        </div>
                     </div>
                 </div>
             </div>

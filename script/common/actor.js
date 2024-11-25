@@ -191,6 +191,7 @@ export class DarkHeresyActor extends Actor {
 
     _computeArmour() {
         let locations = Object.keys(game.darkHeresy.config.hitLocations);
+        let cyberLocations = Object.keys(game.darkHeresy.config.cybernetic.part);
         let toughness = this.characteristics.toughness;
 
         this.system.armour = locations
@@ -244,6 +245,79 @@ export class DarkHeresyActor extends Actor {
         this.armour.body.total += this.armour.body.value;
         this.armour.leftLeg.total += this.armour.leftLeg.value;
         this.armour.rightLeg.total += this.armour.rightLeg.value;
+
+        let cyberArmor = cyberLocations
+            .reduce((acc, cyberLocations) =>
+                Object.assign(acc, { [cyberLocations]: 0 }), {});
+
+        let cyberToughnes = cyberLocations
+            .reduce((acc, cyberLocations) =>
+                Object.assign(acc, { [cyberLocations]: 0 }), {});
+
+        this.items
+            .filter(item => item.isCybernetic)
+            .reduce((acc, cArmour) =>
+            {
+                cyberLocations.forEach(cyberLocations =>
+                {
+                    if (cArmour.system.isCArmor && cArmour.system.installed && cArmour.part[cyberLocations] !== 0)
+                    {
+
+                        let armourVal = cArmour.part[cyberLocations] || 0;
+                        cyberArmor[cyberLocations] += armourVal;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                });
+                return acc;
+            }, cyberArmor);
+
+        this.items
+            .filter(item => item.isCybernetic)
+            .reduce((acc, cArmour) =>
+            {
+                cyberLocations.forEach(cyberLocations =>
+                {
+                    if (cArmour.system.isCArmor && cArmour.system.installed && cArmour.part[cyberLocations] !== 0)
+                    {
+
+                        let armourVal = cArmour.part[cyberLocations] || 0;
+                        cyberArmor[cyberLocations] += armourVal;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                });
+                return acc;
+            }, cyberToughnes);
+
+        this.armour.head.toughnessBonus += cyberToughness.head;
+        this.armour.leftArm.toughnessBonus += cyberToughness.leftArm;
+        this.armour.rightArm.toughnessBonus += cyberToughness.rightArm;
+        this.armour.body.toughnessBonus += cyberToughness.body;
+        this.armour.leftLeg.toughnessBonus += cyberToughness.leftLeg;
+        this.armour.rightLeg.toughnessBonus += cyberToughness.rightLeg;
+
+        this.armour.head.value += cyberArmor.head;
+        this.armour.leftArm.value += cyberArmor.leftArm;
+        this.armour.rightArm.value += cyberArmor.rightArm;
+        this.armour.body.value += cyberArmor.body;
+        this.armour.leftLeg.value += cyberArmor.leftLeg;
+        this.armour.rightLeg.value += cyberArmor.rightLeg;
+
+        this.armour.head.total = this.armour.head.value + this.armour.head.toughnessBonus
+        this.armour.leftArm.total = this.armour.leftArm.value + this.armour.leftArm.toughnessBonus
+        this.armour.rightArm.total = this.armour.rightArm.value + this.armour.rightArm.toughnessBonus
+        this.armour.body.total = this.armour.body.value + this.armour.body.toughnessBonus
+        this.armour.leftLeg.total = this.armour.leftLeg.value + this.armour.leftLeg.toughnessBonus
+        this.armour.rightLeg.total = this.armour.rightLeg.value + this.armour.rightLeg.toughnessBonus
+
+
     }
 
     _computeMovement() {

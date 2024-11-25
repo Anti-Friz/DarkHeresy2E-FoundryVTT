@@ -170,7 +170,7 @@
                             </div>
                             <div>{{item.name}}</div>
                         </div>
-                        <div class="short-description">{{item.shortDescription}}</div>
+                        <div class="short-description">{{enrich item.shortDescription}}</div>
                         <div class="weight">{{item.weight}}</div>
                         <div class="button">
                             <a class="item-control item-delete" title="Delete Gear"><i class="fas fa-trash"></i></a>
@@ -195,7 +195,7 @@
                             </div>
                             <div>{{item.name}}</div>
                         </div>
-                        <div class="short-description">{{item.shortDescription}}</div>
+                        <div class="short-description">{{enrich item.shortDescription}}</div>
                         <div class="weight">{{item.weight}}</div>
                         <div class="button">
                             <a class="item-control item-delete" title="Delete Drug"><i class="fas fa-trash"></i></a>
@@ -220,7 +220,7 @@
                             </div>
                             <div>{{item.name}}</div>
                         </div>
-                        <div class="short-description">{{item.shortDescription}}</div>
+                        <div class="short-description">{{enrich item.shortDescription}}</div>
                         <div class="weight">{{item.weight}}</div>
                         <div class="button">
                             <a class="item-control item-delete" title="Delete Tool"><i class="fas fa-trash"></i></a>
@@ -233,26 +233,28 @@
             <div class="flex header">
                 <b class="name">{{localize "CYBERNETIC.HEADER"}}</b>
                 <b class="installed">{{localize "CYBERNETIC.INSTALLED"}}</b>
-                <b class="cybernetic-craftsmanship">{{localize "CYBERNETIC.CRAFTSMANSHIP"}}</b>
+                <!--<b class="cybernetic-craftsmanship">{{localize "CYBERNETIC.CRAFTSMANSHIP"}}</b>-->
+                <b class="cybernetic-craftsmanship">{{localize "TITLE.NOTES"}}</b>
                 <b class="weight">{{localize "CYBERNETIC.WEIGHT"}}</b>
                 <a class="button item-create" title="Add Cybernetic" data-type="cybernetic"><i class="fas fa-plus"></i></a>
             </div>
             <div class="items">
                 {{#each items.cybernetics as |item|}}                    
-                    <div class="gear item flex row" data-item-id="{{item.id}}">
-                        <div class="flex name item-edit">
-                            <div class="image-container">
-                                <div class="image" style="background-image: url('{{item.img}}')"></div>
-                            </div>
-                            <div>{{item.name}}</div>
+                <div class="gear item flex row" data-item-id="{{item.id}}">
+                    <div class="flex name item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
                         </div>
-                        <div class="installed">{{item.isInstalled}}</div>
-                        <div class="cybernetic-craftsmanship">{{item.Craftsmanship}}</div>
-                        <div class="weight">{{item.weight}}</div>
-                        <div class="button">
-                            <a class="item-control item-delete" title="Delete Cybernetic"><i class="fas fa-trash"></i></a>
-                        </div>
+                        <div>{{item.name}}</div>
                     </div>
+                    <div class="installed">{{item.isInstalled}}</div>
+                    <!--<div class="cybernetic-craftsmanship">{{item.Craftsmanship}}</div>-->
+                    <div class="cybernetic-craftsmanship">{{{enrich item.description}}}</div>
+                    <div class="weight">{{item.weight}}</div>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete Cybernetic"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
                 {{/each}}
             </div>
         </div>

@@ -25,7 +25,12 @@ export async function prepareCommonRoll(rollData) {
                         rollData.target.base = parseInt(html.find("#target")[0].value, 10);
                         rollData.rolledWith = html.find("[name=characteristic] :selected").text();
                     }
-                    rollData.target.modifier = parseInt(html.find("#modifier")[0].value, 10);
+
+                    if (rollData.modifier)
+                    {
+                        rollData.modifier = parseInt(html.find("#modifier")[0].value, 10);
+                    }
+
                     rollData.flags.isDamageRoll = false;
                     rollData.flags.isCombatRoll = false;
                     await commonRoll(rollData);
