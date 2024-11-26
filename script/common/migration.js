@@ -37,6 +37,20 @@ const migrateActorData = (actor, worldSchemaVersion) => {
             let advance = -20;
             let total = characteristic.total + advance;
 
+            actor.data.data.skills.commonLore.specialities.vertexSubSector = {
+                label: "Vertex SubSector",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.commonLore.specialities.calixisSector = {
+                label: "Calixis Sector",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            update["system.skills.commonLore"] = actor.data.data.skills.commonLore;
+
             actor.data.data.skills.forbiddenLore.specialities.officioAssassinorum = {
                 label: "Officio Assassinorum",
                 isKnown: false,
@@ -72,7 +86,365 @@ const migrateActorData = (actor, worldSchemaVersion) => {
                 total: total,
                 cost: 0
             };
+            actor.data.data.skills.forbiddenLore.specialities.astromancy = {
+                label: "Astromancy",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.beasts = {
+                label: "Beasts",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.bureaucracy = {
+                label: "Bureaucracy",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.chymistry = {
+                label: "Chymistry",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.cryptology = {
+                label: "Cryptology",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.heraldry = {
+                label: "Heraldry",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.imperialWarrants = {
+                label: "Imperial Warrants",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.judgement = {
+                label: "Judgement",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.legend = {
+                label: "Legend",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.numerology = {
+                label: "Numerology",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.occult = {
+                label: "Occult",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.philosophy = {
+                label: "Philosophy",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.tacticaImperialis = {
+                label: "Tactica Imperialis",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.adeptaSororitas = {
+                label: "Adepta Sororitas",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.adeptusArbites = {
+                label: "Adeptus Arbites",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.adeptusAstartes = {
+                label: "Adeptus Astartes",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.adeptusAstraTelepathica = {
+                label: "Adeptus Astra Telepathica",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.adeptusMechanicus = {
+                label: "Adeptus Mechanicus",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.administratum = {
+                label: "Administratum",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.askellonSector = {
+                label: "Askellon Sector",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.chartistCaptains = {
+                label: "Chartist Captains",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.collegiaTitanicu = {
+                label: "Collegia Titanicu",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.ecclesiarchy = {
+                label: "Ecclesiarchy",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.imperialCreed = {
+                label: "Imperial Creed",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.imperialGuard = {
+                label: "Imperial Guard",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.imperialNavy = {
+                label: "Imperial Navy",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.imperium = {
+                label: "Imperium",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.navigators = {
+                label: "Navigators",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.planetaryDefenceForces = {
+                label: "Planetary Defence Forces",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.rogueTraders = {
+                label: "Rogue Traders",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.scholaProgenium = {
+                label: "Schola Progenium",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.tech = {
+                label: "Tech",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.underworld = {
+                label: "Underworld",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.war = {
+                label: "War",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.vertexSubSector = {
+                label: "Vertex SubSector",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.forbiddenLore.specialities.calixisSector = {
+                label: "Calixis Sector",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+
             update["system.skills.forbiddenLore"] = actor.data.data.skills.forbiddenLore;
+
+            actor.data.data.skills.scholasticLore.specialities.adeptaSororitas = {
+                label: "Adepta Sororitas",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.adeptusArbites = {
+                label: "Adeptus Arbites",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.adeptusAstartes = {
+                label: "Adeptus Astartes",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.adeptusAstraTelepathica = {
+                label: "Adeptus Astra Telepathica",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.adeptusMechanicus = {
+                label: "Adeptus Mechanicus",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.administratum = {
+                label: "Administratum",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.askellonSector = {
+                label: "Askellon Sector",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.chartistCaptains = {
+                label: "Chartist Captains",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.collegiaTitanicu = {
+                label: "Collegia Titanicu",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.ecclesiarchy = {
+                label: "Ecclesiarchy",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.imperialCreed = {
+                label: "Imperial Creed",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.imperialGuard = {
+                label: "Imperial Guard",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.imperialNavy = {
+                label: "Imperial Navy",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.imperium = {
+                label: "Imperium",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.navigators = {
+                label: "Navigators",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.planetaryDefenceForces = {
+                label: "Planetary Defence Forces",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.rogueTraders = {
+                label: "Rogue Traders",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.scholaProgenium = {
+                label: "Schola Progenium",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.tech = {
+                label: "Tech",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.underworld = {
+                label: "Underworld",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.war = {
+                label: "War",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.vertexSubSector = {
+                label: "Vertex SubSector",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            actor.data.data.skills.scholasticLore.specialities.calixisSector = {
+                label: "Calixis Sector",
+                advance: advance,
+                isKnown: false,
+                cost: 0
+            };
+            update["system.skills.scholasticLore"] = actor.data.data.skills.scholasticLore;
+
         }
 
     }

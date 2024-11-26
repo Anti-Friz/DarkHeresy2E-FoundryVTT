@@ -2,7 +2,7 @@
     "id": "dark-heresy",
     "title": "Dark Heresy 2E",
     "description": "Unofficial mod for unofficial Foundry VTT System for Dark Heresy 2nd Edition.",
-    "version": "4.3.2af",
+    "version": "4.3.2.1",
     "minimumCoreVersion": 11,
     "compatibility": {
         "minimum": 11,
