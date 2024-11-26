@@ -241,12 +241,12 @@ export class DarkHeresyActor extends Actor {
         this.armour.leftLeg.value = maxArmour.leftLeg;
         this.armour.rightLeg.value = maxArmour.rightLeg;
 
-        this.armour.head.total += this.armour.head.value;
+        /*this.armour.head.total += this.armour.head.value;
         this.armour.leftArm.total += this.armour.leftArm.value;
         this.armour.rightArm.total += this.armour.rightArm.value;
         this.armour.body.total += this.armour.body.value;
         this.armour.leftLeg.total += this.armour.leftLeg.value;
-        this.armour.rightLeg.total += this.armour.rightLeg.value;
+        this.armour.rightLeg.total += this.armour.rightLeg.value;*/
 
         let cyberArmor = cyberLocations
             .reduce((acc, cyberLocations) =>
@@ -268,11 +268,6 @@ export class DarkHeresyActor extends Actor {
                         let armourVal = cArmour.part[cyberLocations] || 0;
                         cyberArmor[cyberLocations] += armourVal;
                     }
-                    else
-                    {
-                        return;
-                    }
-
                 });
                 return acc;
             }, cyberArmor);
@@ -289,11 +284,6 @@ export class DarkHeresyActor extends Actor {
                         let armourVal = cArmour.part[cyberLocations] || 0;
                         cyberToughnes[cyberLocations] += armourVal;
                     }
-                    else
-                    {
-                        return;
-                    }
-
                 });
                 return acc;
             }, cyberToughnes);

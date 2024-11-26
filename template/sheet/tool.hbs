@@ -43,9 +43,7 @@
                 <div class="stats-row">
                     <div class="stat short-description">
                         <label>{{localize "TOOL.SHORT_DESCRIPTION"}}</label>
-                        <div style="height: 132px; width: 100%">
-                            {{{editor enrichment.system.shortDescription target="system.shortDescription" engine="prosemirror" button=true owner=owner editable=editable}}}
-                        </div>
+                        <input name="system.shortDescription" type="text" value="{{system.shortDescription}}" />
                     </div>
                 </div>
             </div>
