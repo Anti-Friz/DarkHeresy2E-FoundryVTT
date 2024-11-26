@@ -189,9 +189,11 @@ export class DarkHeresyActor extends Actor {
         else this._computeExperience_normal();
     }
 
-    _computeArmour() {
+    _computeArmour()
+    {
+        debugger;
         let locations = Object.keys(game.darkHeresy.config.hitLocations);
-        let cyberLocations = Object.keys(game.darkHeresy.config.cybernetic.part);
+        let cyberLocations = Object.keys(game.system.template.Item.cybernetic.part);
         let toughness = this.characteristics.toughness;
 
         this.system.armour = locations
@@ -281,11 +283,11 @@ export class DarkHeresyActor extends Actor {
             {
                 cyberLocations.forEach(cyberLocations =>
                 {
-                    if (cArmour.system.isCArmor && cArmour.system.installed && cArmour.part[cyberLocations] !== 0)
+                    if (!cArmour.system.isCArmor && cArmour.system.installed && cArmour.part[cyberLocations] !== 0)
                     {
 
                         let armourVal = cArmour.part[cyberLocations] || 0;
-                        cyberArmor[cyberLocations] += armourVal;
+                        cyberToughnes[cyberLocations] += armourVal;
                     }
                     else
                     {
@@ -296,12 +298,12 @@ export class DarkHeresyActor extends Actor {
                 return acc;
             }, cyberToughnes);
 
-        this.armour.head.toughnessBonus += cyberToughness.head;
-        this.armour.leftArm.toughnessBonus += cyberToughness.leftArm;
-        this.armour.rightArm.toughnessBonus += cyberToughness.rightArm;
-        this.armour.body.toughnessBonus += cyberToughness.body;
-        this.armour.leftLeg.toughnessBonus += cyberToughness.leftLeg;
-        this.armour.rightLeg.toughnessBonus += cyberToughness.rightLeg;
+        this.armour.head.toughnessBonus += cyberToughnes.head;
+        this.armour.leftArm.toughnessBonus += cyberToughnes.leftArm;
+        this.armour.rightArm.toughnessBonus += cyberToughnes.rightArm;
+        this.armour.body.toughnessBonus += cyberToughnes.body;
+        this.armour.leftLeg.toughnessBonus += cyberToughnes.leftLeg;
+        this.armour.rightLeg.toughnessBonus += cyberToughnes.rightLeg;
 
         this.armour.head.value += cyberArmor.head;
         this.armour.leftArm.value += cyberArmor.leftArm;
