@@ -137,3 +137,40 @@ Hooks.on("renderDarkHeresySheet", (sheet, html, data) => {
     html.find("input.cost").prop("disabled", game.settings.get("dark-heresy", "autoCalcXPCosts"));
     html.find(":not(.psychic-power) > input.item-cost").prop("disabled", game.settings.get("dark-heresy", "autoCalcXPCosts"));
 });
+
+Hooks.once("dragRuler.ready", (SpeedProvider) =>
+{
+    class DarkHeresySpeedProvider extends SpeedProvider
+    {
+        get colors()
+        {
+            return [
+                { id: "halfMove", default: 0x00FF7F, name: "dark-heresy.system.movement.half" },
+                { id: "fullMove", default: 0x00FF00, name: "dark-heresy.system.movement.full" },
+                { id: "charge", default: 0xFFFF00, name: "dark-heresy.system.movementrun.charge" },
+                { id: "run", default: 0xFF4500, name: "dark-heresy.system.movement.run" }
+            ];
+        }
+
+        getRanges(token)
+        {
+            const halfMove = token.actor.system.movement.half;
+            const fullMove = token.actor.system.movement.fullMove;
+            const charge = token.actor.system.movement.charge;
+            const run = token.actor.system.movement.run;
+
+            // A character can always walk it's base speed and dash twice it's base speed
+            const ranges = [
+                { range: halfMove, color: "halfMove" },
+                { range: fullMove, color: "fullMove" },
+                { range: charge, color: "charge" },
+                { range: run, color: "run" }
+            ];
+
+
+            return ranges;
+        }
+    }
+
+    dragRuler.registerSystem("dark-heresy", DarkHeresySpeedProvider);
+});

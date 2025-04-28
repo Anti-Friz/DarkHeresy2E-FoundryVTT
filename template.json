@@ -1143,8 +1143,25 @@
       "part": "body"
     },
     "cybernetic": {
-      "templates": [ "equipment" ],
-      "installed": false
+        "templates": [ "equipment" ],
+        "installed": false,
+        "isCArmor": false,
+        "part": {
+            "head": 0,
+            "leftArm": 0,
+            "rightArm": 0,
+            "body": 0,
+            "leftLeg": 0,
+            "rightLeg": 0
+        },
+        "installedIn": {
+            "head": false,
+            "leftArm": false,
+            "rightArm": false,
+            "body": false,
+            "leftLeg": false,
+            "rightLeg": false
+        }
     },
     "drug": {
       "templates": [ "equipment" ],
