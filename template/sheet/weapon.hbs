@@ -91,7 +91,10 @@
                 <div class="stats-row">
                     <div class="stat special">
                         <label>{{localize "WEAPON.SPECIAL"}}</label>
-                        <input name="system.special" type="text" value="{{system.special}}" />
+                        <div style="height: 132px; width: 100%; text-align: center;" >
+                            {{editor enrichment.system.special target="system.special" button=true editable=editable  engine="prosemirror" collaborate=false }}
+                        </div>
+                        
                     </div>
                     <div class="stat attack">
                         <label>{{localize "WEAPON.ATTACK"}}</label>

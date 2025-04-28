@@ -191,7 +191,6 @@ export class DarkHeresyActor extends Actor {
 
     _computeArmour()
     {
-        debugger;
         let locations = Object.keys(game.darkHeresy.config.hitLocations);
         let cyberLocations = Object.keys(game.system.template.Item.cybernetic.part);
         let toughness = this.characteristics.toughness;

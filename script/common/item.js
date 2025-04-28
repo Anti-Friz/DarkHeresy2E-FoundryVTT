@@ -348,4 +348,14 @@ export class DarkHeresyItem extends Item {
 
     get upgrades() { return this.system.upgrades;}
 
+    get enrichedDescription() { return this.system.enrichedDescription; }
+
+    get enrichedEffect() { return this.system.enrichedEffect; }
+
+    get enrichedBenefit() { return this.system.enrichedBenefit; }
+
+    get enrichedShortDescription() { return this.system.enrichedShortDescription; }
+
+    get enrichedSpecial() { return this.system.enrichedSpecial; }
+
 }

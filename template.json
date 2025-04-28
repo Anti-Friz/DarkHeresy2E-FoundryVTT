@@ -1511,7 +1511,12 @@
                 "craftsmanship": "common",
                 "description": "",
                 "availability": "common",
-                "weight": 0
+                "weight": 0,
+                "enrichedDescription": "",
+                "enrichedEffect": "",
+                "enrichedBenefit": "",
+                "enrichedShortDescription": "",
+                "enrichedSpecial": ""
             },
             "itemDescription": {
                 "description": "",
