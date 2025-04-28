@@ -192,7 +192,17 @@ export class DarkHeresyActor extends Actor {
     _computeArmour() {
         let locations = Object.keys(game.darkHeresy.config.hitLocations);
         let toughness = this.characteristics.toughness;
+
+        // TEMPORARY!!!!!
+
+        const originalWarn = console.warn;
+        console.warn = () => { };
+
         let cyberLocations = Object.keys(game.system.template.Item.cybernetic.part);
+
+        console.warn = originalWarn;
+
+        // TEMPORARY!!!!!
 
         this.system.armour = locations
             .reduce((accumulator, location) =>
@@ -251,33 +261,24 @@ export class DarkHeresyActor extends Actor {
             .filter(item => item.isCybernetic)
             .reduce((acc, cArmour) =>
             {
-                cyberLocations.forEach(cyberLocations =>
+                cyberLocations.forEach(cyberLocation =>
                 {
-                    if (cArmour.system.isCArmor && cArmour.system.installed && cArmour.part[cyberLocations] !== 0)
+                    if (cArmour.system.installed && cArmour.part[cyberLocation] !== 0)
                     {
 
-                        let armourVal = cArmour.part[cyberLocations] || 0;
-                        cyberArmor[cyberLocations] += armourVal;
+                        let armourVal = cArmour.part[cyberLocation] || 0;
+                        if (cArmour.system.isCArmor)
+                        {
+                            cyberArmor[cyberLocation] += armourVal;
+                        }
+                        else
+                        {
+                            cyberToughnes[cyberLocation] += armourVal;
+                        }
                     }
                 });
                 return acc;
             }, cyberArmor);
-
-        this.items
-            .filter(item => item.isCybernetic)
-            .reduce((acc, cArmour) =>
-            {
-                cyberLocations.forEach(cyberLocations =>
-                {
-                    if (!cArmour.system.isCArmor && cArmour.system.installed && cArmour.part[cyberLocations] !== 0)
-                    {
-
-                        let armourVal = cArmour.part[cyberLocations] || 0;
-                        cyberToughnes[cyberLocations] += armourVal;
-                    }
-                });
-                return acc;
-            }, cyberToughnes);
 
         this.armour.head.toughnessBonus += cyberToughnes.head;
         this.armour.leftArm.toughnessBonus += cyberToughnes.leftArm;
