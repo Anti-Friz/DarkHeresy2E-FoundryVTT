@@ -48,7 +48,8 @@ export default class DhMacroUtil {
         }
     }
 
-    static rollTest(name, type, specialty) {
+    static rollTest(name, mod, type, specialty)
+    {
         let actor = this.getActor();
 
         if (!actor) return ui.notifications.warn(`${game.i18n.localize("NOTIFICATION.MACRO_ACTOR_NOT_FOUND")}`);
@@ -68,6 +69,9 @@ export default class DhMacroUtil {
         } else {
             rollData = DarkHeresyUtil.createCharacteristicRollData(actor, name);
         }
+
+        rollData.target.modifier = mod;
+
         prepareCommonRoll(rollData);
     }
 

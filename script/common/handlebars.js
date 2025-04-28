@@ -112,5 +112,55 @@ function registerHandlebarsHelpers() {
         return game.darkHeresy.config[key];
     });
 
+    Handlebars.registerHelper("getBenefitById", function (enrichment, id)
+    {
+        if (!enrichment || !id)
+        {
+            console.error("enrichment або id не передані!");
+            return null;
+        }
+
+        const item = enrichment.items[id];
+        if (item && item.benefit)
+        {
+            return item.benefit;
+        }
+
+        return "";
+    });
+
+    Handlebars.registerHelper("getDescriptionById", function (enrichment, id)
+    {
+        if (!enrichment || !id)
+        {
+            console.error("enrichment або id не передані!");
+            return null;
+        }
+
+        const item = enrichment.items[id];
+        if (item && item.description)
+        {
+            return item.description;
+        }
+
+        return "";
+    });
+
+    Handlebars.registerHelper("getShortDescriptionById", function (enrichment, id)
+    {
+        if (!enrichment || !id)
+        {
+            console.error("enrichment або id не передані!");
+            return null;
+        }
+
+        const item = enrichment.items[id];
+        if (item && item.shortDescription)
+        {
+            return item.shortDescription;
+        }
+        return "";
+    });
+
 }
 

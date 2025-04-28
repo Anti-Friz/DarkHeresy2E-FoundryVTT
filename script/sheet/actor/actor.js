@@ -33,6 +33,23 @@ export class DarkHeresySheet extends ActorSheet {
         } else {
             enrichment["system.notes"] = await TextEditor.enrichHTML(this.actor.system.notes, {async: true});
         }
+
+        for (const item of this.actor.items)
+        {
+            if (item.type === "psychicPower")
+            {
+                enrichment[`items.${item.id.toString()}.description`] = await TextEditor.enrichHTML(item.description, { async: true });
+            } else if (item.type === "trait" || item.type === "talent" || item.type === "specialAbility")
+            {
+                enrichment[`items.${item.id.toString()}.description`] = await TextEditor.enrichHTML(item.description, { async: true });
+                enrichment[`items.${item.id.toString()}.benefit`] = await TextEditor.enrichHTML(item.benefit, { async: true });
+            }
+            if (item.shortDescription)
+            {
+                enrichment[`items.${item.id.toString()}.shortDescription`] = await TextEditor.enrichHTML(item.shortDescription, { async: true });
+            }
+        }
+
         return foundry.utils.expandObject(enrichment);
     }
 

@@ -25,7 +25,8 @@
                 <div class="stats-row">
                     <div class="stat benefit">
                         <label>{{localize "SPECIAL_ABILITY.BENEFIT"}}</label>
-                        <input name="system.benefit" type="text" value="{{system.benefit}}" />
+                        {{editor enrichment.system.benefit target="system.benefit" engine="prosemirror" button=true owner=owner editable=editable}}
+                        <!--<input name="system.benefit" type="text" value="{{system.benefit}}" />-->
                     </div>
                 </div>
             </div>

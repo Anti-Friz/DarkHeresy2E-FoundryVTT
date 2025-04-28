@@ -163,19 +163,20 @@
             </div>
             <div class="items">
                 {{#each items.gear as |item|}}
-                    <div class="gear item flex row" data-item-id="{{item.id}}">
-                        <div class="flex name item-edit">
-                            <div class="image-container">
-                                <div class="image" style="background-image: url('{{item.img}}')"></div>
-                            </div>
-                            <div>{{item.name}}</div>
+                <div class="gear item flex row" data-item-id="{{item.id}}">
+                    <div class="flex name item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
                         </div>
-                        <div class="short-description">{{item.shortDescription}}</div>
-                        <div class="weight">{{item.weight}}</div>
-                        <div class="button">
-                            <a class="item-control item-delete" title="Delete Gear"><i class="fas fa-trash"></i></a>
-                        </div>
+                        <div>{{item.name}}</div>
                     </div>
+                    {{editor (getShortDescriptionById ../enrichment item.id) class="short-description" target="item.shortDescription" engine="prosemirror" button=false editable=false}}
+                    <!--<div class="short-description">{{item.shortDescription}}</div>-->
+                    <div class="weight">{{item.weight}}</div>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete Gear"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
                 {{/each}}
             </div>
         </div>
@@ -188,19 +189,20 @@
             </div>
             <div class="items">
                 {{#each items.drugs as |item|}}                    
-                    <div class="gear item flex row" data-item-id="{{item.id}}">
-                        <div class="flex name item-edit">
-                            <div class="image-container">
-                                <div class="image" style="background-image: url('{{item.img}}')"></div>
-                            </div>
-                            <div>{{item.name}}</div>
+                <div class="gear item flex row" data-item-id="{{item.id}}">
+                    <div class="flex name item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
                         </div>
-                        <div class="short-description">{{item.shortDescription}}</div>
-                        <div class="weight">{{item.weight}}</div>
-                        <div class="button">
-                            <a class="item-control item-delete" title="Delete Drug"><i class="fas fa-trash"></i></a>
-                        </div>
-                    </div>                    
+                        <div>{{item.name}}</div>
+                    </div>
+                    {{editor (getShortDescriptionById ../enrichment item.id) class="short-description" target="item.shortDescription" engine="prosemirror" button=false editable=false}}
+                    <!--<div class="short-description">{{item.shortDescription}}</div>-->
+                    <div class="weight">{{item.weight}}</div>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete Drug"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>                    
                 {{/each}}
             </div>
         </div>
@@ -213,19 +215,20 @@
             </div>
             <div class="items">
                 {{#each items.tools as |item|}}                    
-                    <div class="gear item flex row" data-item-id="{{item.id}}">
-                        <div class="flex name item-edit">
-                            <div class="image-container">
-                                <div class="image" style="background-image: url('{{item.img}}')"></div>
-                            </div>
-                            <div>{{item.name}}</div>
+                <div class="gear item flex row" data-item-id="{{item.id}}">
+                    <div class="flex name item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
                         </div>
-                        <div class="short-description">{{item.shortDescription}}</div>
-                        <div class="weight">{{item.weight}}</div>
-                        <div class="button">
-                            <a class="item-control item-delete" title="Delete Tool"><i class="fas fa-trash"></i></a>
-                        </div>
-                    </div>                    
+                        <div>{{item.name}}</div>
+                    </div>
+                    {{editor (getShortDescriptionById ../enrichment item.id) class="short-description" target="item.shortDescription" engine="prosemirror" button=false editable=false}}
+                    <!--<div class="short-description">{{item.shortDescription}}</div>-->
+                    <div class="weight">{{item.weight}}</div>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete Tool"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>                    
                 {{/each}}
             </div>
         </div>
