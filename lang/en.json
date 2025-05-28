@@ -372,6 +372,8 @@
     "TAB.NOTES": "NOTES",
     "TAB.DATA": "DATA",
     "TAB.EFFECT": "EFFECT",
+    "TAB.BENEFIT": "BENEFIT",
+    "TAB.SHORTDESC": "SHOR DESCRIPTION",
 
     "TALENT.NAME": "Name",
     "TALENT.BENEFIT": "Benefit",
