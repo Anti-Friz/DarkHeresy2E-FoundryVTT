@@ -2,12 +2,11 @@
     "id": "dark-heresy",
     "title": "Dark Heresy 2E AntiFriz Forked",
     "description": "Unofficial Foundry VTT System for Dark Heresy 2nd Edition.",
-    "version": "4.3.2.1",
-    "minimumCoreVersion": 11,
+    "version": "5.0.0 alpha",
     "compatibility": {
-        "minimum": 11,
-        "verified": 12,
-        "maximum": 12
+        "minimum": 13,
+        "verified": 13,
+        "maximum": 13
     },
     "authors": [
         { "name": "JeansenVaars" },
