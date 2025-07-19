@@ -38,6 +38,7 @@ export class AcolyteSheet extends DarkHeresySheet {
         html.find(".aptitude-delete").click(async ev => { await this._onAptitudeDelete(ev); });
         html.find(".item-cost").focusout(async ev => { await this._onItemCostFocusOut(ev); });
         html.find(".item-starter").click(async ev => { await this._onItemStarterClick(ev); });
+        html.find(".add-skill-speciality").click(async ev => { await this._onAddSkillSpeciality(ev); });
     }
 
     async _onAptitudeCreate(event) {
@@ -68,5 +69,19 @@ export class AcolyteSheet extends DarkHeresySheet {
         const div = $(event.currentTarget).parents(".item");
         let item = this.actor.items.get(div.data("itemId"));
         item.update({"system.starter": $(event.currentTarget)[0].checked});
+    }
+
+    async _onAddSkillSpeciality(event) {
+        event.preventDefault();
+        const target = $(event.currentTarget);
+        const skillKey = target.data("skill-key");
+        const skillName = target.data("skill-name");
+
+        if (!skillKey || !skillName) {
+            ui.notifications.error(game.i18n.localize("ERROR.SKILL_DATA_MISSING"));
+            return;
+        }
+
+        await game.darkHeresy.dialogs.AddSkillSpecialityDialog.show(this.actor, skillKey, skillName);
     }
 }

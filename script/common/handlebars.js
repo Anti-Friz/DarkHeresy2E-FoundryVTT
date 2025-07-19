@@ -58,7 +58,8 @@ function preloadHandlebarsTemplates() {
 
         "systems/dark-heresy/template/dialog/common-roll.hbs",
         "systems/dark-heresy/template/dialog/combat-roll.hbs",
-        "systems/dark-heresy/template/dialog/psychic-power-roll.hbs"
+        "systems/dark-heresy/template/dialog/psychic-power-roll.hbs",
+        "systems/dark-heresy/template/dialog/add-skill-speciality.hbs"
     ];
     return loadTemplates(templatePaths);
 }
@@ -112,7 +113,7 @@ function registerHandlebarsHelpers() {
         return game.darkHeresy.config[key];
     });
 
-    Handlebars.registerHelper("getBenefitById", function (enrichment, id)
+    Handlebars.registerHelper("getBenefitById", function(enrichment, id)
     {
         if (!enrichment || !id)
         {
@@ -129,7 +130,7 @@ function registerHandlebarsHelpers() {
         return "";
     });
 
-    Handlebars.registerHelper("getDescriptionById", function (enrichment, id)
+    Handlebars.registerHelper("getDescriptionById", function(enrichment, id)
     {
         if (!enrichment || !id)
         {
@@ -146,7 +147,7 @@ function registerHandlebarsHelpers() {
         return "";
     });
 
-    Handlebars.registerHelper("getShortDescriptionById", function (enrichment, id)
+    Handlebars.registerHelper("getShortDescriptionById", function(enrichment, id)
     {
         if (!enrichment || !id)
         {

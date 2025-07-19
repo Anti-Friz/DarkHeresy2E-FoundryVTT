@@ -3,8 +3,6 @@ $targetFile = ".\dark-heresy.zip"
 
 New-Item -Path '.\release' -ItemType Directory
 
-gulp buildAll
-
 Copy-Item -Path ".\asset" -Destination $target -Recurse
 Copy-Item -Path ".\lang" -Destination $target -Recurse
 Copy-Item -Path ".\logo" -Destination $target -Recurse

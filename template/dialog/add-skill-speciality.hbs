@@ -1,0 +1,21 @@
+<form class="dark-heresy-dialog add-skill-speciality"></form>
+    <div class="flex row wrap background border" style="flex-basis: 100%;margin-bottom: 5px">
+        <div class="form-group">
+            <label for="skill-name">{{localize "SKILL.NAME"}}</label>
+            <input id="skill-name" type="text" value="{{skillName}}" readonly disabled />
+        </div>
+
+        <div class="form-group">
+            <label for="speciality-name">{{localize "SKILL.SPECIALITY_NAME"}}</label>
+            <input id="speciality-name" name="specialityName" type="text"
+                placeholder="{{localize 'SKILL.ENTER_SPECIALITY_NAME'}}" required />
+        </div>
+    </div>
+</form>
+
+
+<script>
+    $(".wrapper input").focusin(function () {
+        $(this).select();
+    });
+</script>

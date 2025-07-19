@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "build": "gulp buildAll",
+    "build": "gulp buildAll && powershell -ExecutionPolicy Bypass -File ./dev.ps1",
     "release": "npm run build && powershell -ExecutionPolicy Bypass -File ./createReleaseZip.ps1",
-    "build:css": "gulp buildCSS",
+    "build:css": "gulp buildCSS && powershell -ExecutionPolicy Bypass -File ./dev.ps1",
     "build:watch": "gulp",
     "lint": "gulp lint",
     "lint:fix": "gulp lint --fix",

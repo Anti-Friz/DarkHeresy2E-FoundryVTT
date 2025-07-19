@@ -102,6 +102,7 @@
     "BUTTON.CANCEL": "Cancel",
     "BUTTON.YES": "Yes",
     "BUTTON.NO": "No",
+    "BUTTON.ADD": "Add",
 
     "ENCUMBRANCE.MAX": "Max",
     "ENCUMBRANCE.CURRENT": "Current",
@@ -209,6 +210,7 @@
     "DIALOG.AIM": "Aiming",
     "DIALOG.EVASION": "Evasion",
     "DIALOG.DENY_THE_WITCH": "Deny the Witch",
+    "DIALOG.ADD_SKILL_SPECIALITY": "Add Skill Speciality",
 
     "DRUG.HEADER": "Drug",
     "DRUG.NAME": "Name",
@@ -357,6 +359,8 @@
     "SKILL.TOTAL": "Total",
     "SKILL.COST": "Cost",
     "SKILL.STARTER": "I",
+    "SKILL.SPECIALITY_NAME": "Speciality Name",
+    "SKILL.ENTER_SPECIALITY_NAME": "Enter speciality name...",
 
     "SIZE": "Size",
 
@@ -482,5 +486,11 @@
 
     "CYBERNETIC.CYBERARMOR": "Defense from cybernetics",
     "CYBERNETIC.INSTALLEDIN": "Installed In",
-    "CYBERNETIC.IS_ARMOUR": "Armour?"
+    "CYBERNETIC.IS_ARMOUR": "Armour?",
+
+    "ERROR.SPECIALITY_NAME_REQUIRED": "Speciality name is required",
+    "ERROR.SPECIALITY_ALREADY_EXISTS": "This speciality already exists",
+    "ERROR.SKILL_DATA_MISSING": "Skill data is missing",
+
+    "NOTIFICATION.SPECIALITY_ADDED": "{speciality} speciality added to {skill}"
 }

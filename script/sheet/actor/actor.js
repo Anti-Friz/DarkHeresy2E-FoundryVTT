@@ -102,6 +102,10 @@ export class DarkHeresySheet extends ActorSheet {
         div.slideUp(200, () => this.render(false));
     }
 
+    _onFocusIn(event) {
+        $(event.currentTarget).select();
+    }
+
     async _prepareCustomRoll() {
         const rollData = {
             name: "DIALOG.CUSTOM_ROLL",
