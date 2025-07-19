@@ -4,7 +4,7 @@
         <div class="item-list">
             <div class="flex header">
                 <b class="name">{{localize "APTITUDE.NAME"}}</b>
-                <a class="button item-create" title="Add Aptitude" data-type="aptitude"><i class="fas fa-plus"></i></a>
+                <a class="button item-create" title="Add Aptitude" data-type="aptitude"><i class="fa-solid fa-plus"></i></a>
             </div>
             <div class="items">
                 {{#each items.aptitudes as |item|}}                    
@@ -30,7 +30,7 @@
                 <b class="name">{{localize "TALENT.NAME"}}</b>
                 <b class="cost">{{localize "TALENT.COST"}}</b>
                 <b class="starter">{{localize "TALENT.STARTER"}}</b>
-                <a class="button item-create" title="Add Talent" data-type="talent"><i class="fas fa-plus"></i></a>
+                <a class="button item-create" title="Add Talent" data-type="talent"><i class="fa-solid fa-plus"></i></a>
             </div>
             <div class="items">
                 {{#each items.talents as |item|}}                    
@@ -136,7 +136,7 @@
                 <div class="flex header">
                     <b class="name">{{localize "PSYCHIC_POWER.NAME"}}</b>
                     <b class="cost">{{localize "PSYCHIC_POWER.COST"}}</b>
-                    <a class="button item-create" title="Add Psychic Power" data-type="psychicPower"><i class="fas fa-plus"></i></a>
+                    <a class="button item-create" title="Add Psychic Power" data-type="psychicPower"><i class="fa-solid fa-plus"></i></a>
                 </div>
                 <div class="items">
                     {{#each items.psychicPowers as |item|}}                        
@@ -165,7 +165,7 @@
                 <b class="advance">{{localize "SKILL.ADVANCE"}}</b>
                 <b class="total">{{localize "SKILL.TOTAL"}}</b>
                 <b class="cost">{{localize "SKILL.COST"}}</b>
-                <b class="starter">{{localize "SKILL.STARTER"}}</b>
+                <b class="starter">{{localize "SKILL.STARTER"}}</b>                   
             </div>
             <div class="items">
                 {{#each system.skills as |skill key|}}
@@ -185,6 +185,7 @@
                     {{#if skill.isSpecialist}}
                         <div class="flex header">
                             <b class="name">{{localize skill.label}}</b>
+                            <b class="button add-skill-speciality" title="Add Skill Speciality" data-skill-key="{{key}}" data-skill-name="{{localize skill.label}}"><i class="fa-solid fa-plus"></i></b>
                         </div>
                         {{#each skill.specialities as |speciality keySpe|}}
                             <div class="speciality item flex row">
