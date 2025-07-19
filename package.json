@@ -1,11 +1,12 @@
 {
   "scripts": {
     "build": "gulp buildAll",
+    "release": "npm run build && powershell -ExecutionPolicy Bypass -File ./createReleaseZip.ps1",
     "build:css": "gulp buildCSS",
     "build:watch": "gulp",
     "lint": "gulp lint",
     "lint:fix": "gulp lint --fix",
-    "test": "npm run lint:fix"
+    "test": "npm run lint:fix"    
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.24.0",
