@@ -47,7 +47,7 @@ export class EditSkillSpecialitiesDialog {
                         label: game.i18n.localize("BUTTON.CANCEL"),
                         callback: () => resolve(false)
                     }
-                }, // No default buttons, we handle them manually
+                },
                 default: null,
                 render: html => {
                     EditSkillSpecialitiesDialog._activateListeners(html, actor, skillKey, skillName, resolve);
@@ -157,6 +157,49 @@ export class EditSkillSpecialitiesDialog {
         // Delete speciality
         html.on("click", ".delete-speciality-btn", event => {
             $(event.currentTarget).closest(".speciality-row").remove();
+        });
+        html.on("click", ".add-skill-speciality", event => {
+            // Find the table body
+            const container = html[0] || html.get ? html[0] : html;
+            const tbody = container.querySelector(".specialities-list");
+            if (!tbody) return;
+
+            // Generate a unique key for the new row
+            const newKey = `new_${Date.now()}_${Math.floor(Math.random()*10000)}`;
+
+            // Create a new row element
+            const tr = document.createElement("tr");
+            tr.className = "speciality-row";
+            tr.setAttribute("data-speciality-key", newKey);
+            tr.setAttribute("data-original", "false");
+            tr.setAttribute("draggable", "true");
+            tr.innerHTML = `
+                <td class="drag-handle">
+                    <i class="fa-solid fa-grip-vertical"></i>
+                </td>
+                <td>
+                    <input type="text" class="speciality-name" value="" placeholder="${game.i18n.localize("SKILL.ENTER_SPECIALITY_NAME")}" />
+                </td>
+                <td class="actions">
+                    <button class="delete-speciality-btn" type="button" title="${game.i18n.localize("BUTTON.DELETE")}">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+
+            // Focus the new input
+            const input = tr.querySelector(".speciality-name");
+            if (input) {
+                input.focus();
+            }
+
+            // Attach drag events to the new row
+            tr.addEventListener("dragstart", handleDragStart);
+            tr.addEventListener("dragover", handleDragOver);
+            tr.addEventListener("dragleave", handleDragLeave);
+            tr.addEventListener("drop", handleDrop);
+            tr.addEventListener("dragend", handleDragEnd);
         });
         // Handle Enter key in input fields
         html.on("keydown", ".speciality-name", event => {
@@ -284,6 +327,7 @@ export class EditSkillSpecialitiesDialog {
         for (const { key, data } of newSpecialitiesArr) {
             newSpecialities[key] = data;
         }
+        debugger;
         // Update the actor with new specialities
         const updatePath = `system.skills.${skillKey}.specialities`;
         await actor.update({
@@ -311,7 +355,6 @@ export class EditSkillSpecialitiesDialog {
      * @private
      */
     static _generateSpecialityKey(name, existingSpecialities) {
-        debugger;
         // Convert to lowerCamelCase: remove non-alphanum, capitalize words except first, join
         const words = name.match(/[A-Za-z0-9]+/g) || [];
         if (words.length === 0) return "speciality";
