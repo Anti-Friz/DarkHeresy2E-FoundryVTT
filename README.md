@@ -1,5 +1,20 @@
 # Dark Heresy 2E - Continued
 
+### tab "Forked" Readmy
+An **UNOFFICIAL** system for playing Dark Heresy 2E on [Foundry VTT](https://foundryvtt.com/).
+    And also **UNOFFICIAL** :) fork of [Vendare Dark Heresy 2E system](https://github.com/Vendare/DarkHeresy2E-FoundryVTT)
+
+    So, I added so far:
+    * Basic support for V13
+    * Change how cybernetics works in term of armor - you may assign defense/toughness and where augment. is installed.
+    * Added riched text for different fields on sheet (special conditions, descriptions etc.), because I found it very useful.
+    * Added ability to ADD and EDIT of skill specialties (also change their position in skill), pretty basic UI - but works. (to change position just drag row in Edit specialty dialog)
+    * Edit one of method - rollTest(name, mod, type, specialty)... maybe there is another way in original system, but I didn’t find it. Primarily its for making macroses with modifications to roll.
+
+    Plans:
+    Better compitabiliy with V13.
+
+### tab Original Readme
 An **UNOFFICIAL** system for playing Dark Heresy 2E on [Foundry VTT](https://foundryvtt.com/).
 
 It provides support for **character sheets only**, game content should be drawn from official source books.
