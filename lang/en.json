@@ -103,6 +103,9 @@
     "BUTTON.YES": "Yes",
     "BUTTON.NO": "No",
     "BUTTON.ADD": "Add",
+    "BUTTON.ADD_SPECIALITY": "Add Speciality",
+    "BUTTON.SAVE": "Save",
+    "BUTTON.DELETE": "Delete",
 
     "ENCUMBRANCE.MAX": "Max",
     "ENCUMBRANCE.CURRENT": "Current",
@@ -211,6 +214,7 @@
     "DIALOG.EVASION": "Evasion",
     "DIALOG.DENY_THE_WITCH": "Deny the Witch",
     "DIALOG.ADD_SKILL_SPECIALITY": "Add Skill Speciality",
+    "DIALOG.EDIT_SKILL_SPECIALITIES": "Edit Skill Specialities",
 
     "DRUG.HEADER": "Drug",
     "DRUG.NAME": "Name",
@@ -491,6 +495,10 @@
     "ERROR.SPECIALITY_NAME_REQUIRED": "Speciality name is required",
     "ERROR.SPECIALITY_ALREADY_EXISTS": "This speciality already exists",
     "ERROR.SKILL_DATA_MISSING": "Skill data is missing",
+    "ERROR.DUPLICATE_SPECIALITY_NAME": "Duplicate speciality name: {name}",
 
-    "NOTIFICATION.SPECIALITY_ADDED": "{speciality} speciality added to {skill}"
+    "NOTIFICATION.SPECIALITY_ADDED": "{speciality} speciality added to {skill}",
+    "NOTIFICATION.SPECIALITIES_UPDATED": "Skill specialities updated successfully",
+
+    "LABEL.ACTIONS": "Actions"
 }

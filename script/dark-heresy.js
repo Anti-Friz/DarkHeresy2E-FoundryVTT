@@ -19,6 +19,7 @@ import { PsychicPowerSheet } from "./sheet/psychic-power.js";
 import { TalentSheet } from "./sheet/talent.js";
 import { SpecialAbilitySheet } from "./sheet/special-ability.js";
 import { AddSkillSpecialityDialog } from "./dialog/add-skill-speciality.js";
+import { EditSkillSpecialitiesDialog } from "./dialog/edit-skill-specialities.js";
 import { TraitSheet } from "./sheet/trait.js";
 import { AptitudeSheet } from "./sheet/aptitude.js";
 import { initializeHandlebars } from "./common/handlebars.js";
@@ -53,7 +54,8 @@ Hooks.once("init", function() {
             combatRoll
         },
         dialogs: {
-            AddSkillSpecialityDialog
+            AddSkillSpecialityDialog,
+            EditSkillSpecialitiesDialog
         }
     };
     game.macro = DhMacroUtil;

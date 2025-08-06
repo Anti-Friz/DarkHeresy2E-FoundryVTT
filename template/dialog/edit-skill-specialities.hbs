@@ -1,0 +1,63 @@
+<form class="dark-heresy-dialog edit-skill-specialities">
+    <div class="form-group">
+        <label for="skill-name">{{localize "SKILL.NAME"}}</label>
+        <input
+            id="skill-name"
+            type="text"
+            value="{{skillName}}"
+            readonly
+            disabled
+        />
+    </div>
+
+    <table class="specialities-table">
+        <thead>
+            <tr class="specialities-header">
+                <th class="drag-handle-header"></th>
+                <th class="name-header">{{localize
+                        "SKILL.SPECIALITY_NAME"
+                    }}</th>
+                <th class="actions-header">{{localize "LABEL.ACTIONS"}}</th>
+            </tr>
+        </thead>
+        <tbody class="specialities-list sortable">
+            {{#each specialities as |speciality|}}
+                <tr
+                    class="speciality-row"
+                    data-speciality-key="{{speciality.key}}"
+                    data-original="true"
+                    draggable="true"
+                >
+                    <td class="drag-handle">
+                        <i class="fa-solid fa-grip-vertical"></i>
+                    </td>
+                    <td>
+                        <input
+                            type="text"
+                            class="speciality-name"
+                            value="{{speciality.label}}"
+                            placeholder="{{localize
+                                'SKILL.ENTER_SPECIALITY_NAME'
+                            }}"
+                        />
+                    </td>
+                    <td class="actions">
+                        <button
+                            class="delete-speciality-btn"
+                            type="button"
+                            title="{{localize 'BUTTON.DELETE'}}" >
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() { const
+    specialityInput = document.getElementById('speciality-name'); if
+    (specialityInput) { specialityInput.focus(); specialityInput.select(); } });
+</script>

@@ -197,3 +197,4 @@ release/
 packs/
 /.vs
 .github/copilot-instructions.md
+docs/*.md

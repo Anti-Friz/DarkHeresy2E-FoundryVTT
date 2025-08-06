@@ -1,7 +1,7 @@
-export const init = function ()
+export const init = function()
 {
 
-    Hooks.once("dragRuler.ready", (SpeedProvider) =>
+    Hooks.once("dragRuler.ready", SpeedProvider =>
     {
         class DarkHeresySpeedProvider extends SpeedProvider
         {
