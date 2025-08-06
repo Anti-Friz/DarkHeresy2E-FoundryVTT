@@ -1,7 +1,6 @@
 # Dark Heresy 2E - Continued
 
-<details>
-<summary><b>Forked Readme</b></summary>
+## Forked Readme
 An **UNOFFICIAL** system for playing Dark Heresy 2E on [Foundry VTT](https://foundryvtt.com/).
     And also **UNOFFICIAL** :) fork of [Vendare Dark Heresy 2E system](https://github.com/Vendare/DarkHeresy2E-FoundryVTT)
 
@@ -15,7 +14,6 @@ So, I added so far:
 Plans:
 Better compitabiliy with V13.
 
-</details>
 
 <details>
 <summary><b>Original Readme</b></summary>
@@ -25,7 +23,7 @@ It provides support for **character sheets only**, game content should be drawn 
 
 The project is being continued under the GPL-3.0 License after the original author deleted their project.
 
-</details>
+
 
 ## Install
 1. Go to the setup page and choose **Game Systems**.
@@ -35,6 +33,8 @@ The project is being continued under the GPL-3.0 License after the original auth
 ## Preview
 ![Acolyte 1](https://raw.githubusercontent.com/moo-man/DarkHeresy2E-FoundryVTT/master/asset/preview/acolyte1.jpg)  
 ![Acolyte 2](https://raw.githubusercontent.com/moo-man/DarkHeresy2E-FoundryVTT/master/asset/preview/acolyte2.jpg)  
+
+</details>
 
 ## Related Website
 - https://foundryvtt.com/
