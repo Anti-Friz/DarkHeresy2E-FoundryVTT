@@ -1,6 +1,6 @@
 # Dark Heresy 2E - Continued
 
-### tab "Forked" Readmy
+## tab "Forked" Readmy
 An **UNOFFICIAL** system for playing Dark Heresy 2E on [Foundry VTT](https://foundryvtt.com/).
     And also **UNOFFICIAL** :) fork of [Vendare Dark Heresy 2E system](https://github.com/Vendare/DarkHeresy2E-FoundryVTT)
 
@@ -14,7 +14,7 @@ An **UNOFFICIAL** system for playing Dark Heresy 2E on [Foundry VTT](https://fou
     Plans:
     Better compitabiliy with V13.
 
-### tab Original Readme
+## Original Readme
 An **UNOFFICIAL** system for playing Dark Heresy 2E on [Foundry VTT](https://foundryvtt.com/).
 
 It provides support for **character sheets only**, game content should be drawn from official source books.
