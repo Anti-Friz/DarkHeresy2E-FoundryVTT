@@ -212,6 +212,14 @@
   "EXPERIENCE.SPENT_OTHER": "Wydane na Inne",
   "EXPERIENCE.TOTAL_SPENT": "Suma Wydanych",
   "EXPERIENCE.TOTAL": "Suma",
+  "EXPERIENCE.REMAINING": "Pozostałe",
+  "EXPERIENCE.TRACKER": "Monitor Doświadczenia",
+  "EXPERIENCE.SOURCE": "Źródło",
+  "EXPERIENCE.AMOUNT": "Ilość",
+  "EXPERIENCE.ADD_SOURCE": "Dodaj Źródło Doświadczenia",
+  "EXPERIENCE.EDIT_SOURCES": "Edytuj Źródła Doświadczenia",
+  "EXPERIENCE.DELETE_SOURCE": "Usuń Źródło",
+  "EXPERIENCE.NO_SOURCES": "Nie zapisano jeszcze żadnych źródeł doświadczenia.",
 
   "FATE": "Los",
   "FATIGUE": "Zmęczenie",
@@ -440,5 +448,7 @@
   "WOUND.CRITICAL_INJURIES": "Rany Krytyczne",
   "WOUND.TOTAL": "Pełne",
   "WOUND.CURRENT": "Obecne",
-  "WOUND.CRITICAL_DAMAGE": "Obrażenia Krytyczne"
+  "WOUND.CRITICAL_DAMAGE": "Obrażenia Krytyczne",
+
+  "NOTIFICATION.EXPERIENCE_TRACKER_SAVED": "Dane monitora doświadczenia zostały pomyślnie zapisane"
 }

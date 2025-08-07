@@ -181,6 +181,14 @@
     "EXPERIENCE.SPENT_OTHER": "Dépensée en autre",
     "EXPERIENCE.TOTAL_SPENT": "Total dépensé",
     "EXPERIENCE.TOTAL": "Total",
+    "EXPERIENCE.REMAINING": "Restant",
+    "EXPERIENCE.TRACKER": "Suivi d'Expérience",
+    "EXPERIENCE.SOURCE": "Source",
+    "EXPERIENCE.AMOUNT": "Montant",
+    "EXPERIENCE.ADD_SOURCE": "Ajouter une Source d'Expérience",
+    "EXPERIENCE.EDIT_SOURCES": "Modifier les Sources d'Expérience",
+    "EXPERIENCE.DELETE_SOURCE": "Supprimer la Source",
+    "EXPERIENCE.NO_SOURCES": "Aucune source d'expérience enregistrée pour le moment.",
   
     "FATE": "Destin",
     "FATIGUE": "Fatigue",
@@ -390,5 +398,7 @@
     "WOUND.CRITICAL_INJURIES": "Blessures critiques",
     "WOUND.TOTAL": "Total",
     "WOUND.CURRENT": "Actuel",
+
+    "NOTIFICATION.EXPERIENCE_TRACKER_SAVED": "Données du suivi d'expérience sauvegardées avec succès",
     "WOUND.CRITICAL_DAMAGE": "Dégats critiques"
 }

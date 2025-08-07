@@ -231,6 +231,13 @@
     "EXPERIENCE.SPENT_OTHER": "Spent on Other",
     "EXPERIENCE.TOTAL_SPENT": "Total Spent",
     "EXPERIENCE.TOTAL": "Total",
+    "EXPERIENCE.TRACKER": "Experience Tracker",
+    "EXPERIENCE.SOURCE": "Source",
+    "EXPERIENCE.AMOUNT": "Amount",
+    "EXPERIENCE.ADD_SOURCE": "Add Experience Source",
+    "EXPERIENCE.EDIT_SOURCES": "Edit Experience Sources",
+    "EXPERIENCE.DELETE_SOURCE": "Delete Source",
+    "EXPERIENCE.NO_SOURCES": "No experience sources recorded yet.",
 
     "FATE": "Fate",
     "FATIGUE": "Fatigue",
@@ -499,6 +506,7 @@
 
     "NOTIFICATION.SPECIALITY_ADDED": "{speciality} speciality added to {skill}",
     "NOTIFICATION.SPECIALITIES_UPDATED": "Skill specialities updated successfully",
+    "NOTIFICATION.EXPERIENCE_TRACKER_SAVED": "Experience tracker data saved successfully",
 
     "LABEL.ACTIONS": "Actions"
 }

@@ -1,0 +1,39 @@
+<div class="experience-tracker-dialog">
+    <div class="experience-summary">
+        <div class="summary-row">
+            <label>{{localize "EXPERIENCE.TOTAL"}}:</label>
+            <span class="total-experience">{{totalExperience}}</span>
+        </div>
+        <div class="summary-row">
+            <label>{{localize "EXPERIENCE.REMAINING"}}:</label>
+            <span class="remaining-experience">{{remainingExperience}}</span>
+        </div>
+    </div>
+    
+    <div class="experience-sources">
+        <div class="sources-header">
+            <h3>{{localize "EXPERIENCE.SOURCE"}}</h3>
+            <button type="button" class="add-source-btn" title="{{localize 'EXPERIENCE.ADD_SOURCE'}}">
+                <i class="fa-solid fa-plus"></i> {{localize "EXPERIENCE.ADD_SOURCE"}}
+            </button>
+        </div>
+        
+        <div class="sources-list">
+            {{#if experienceSources.length}}
+                {{#each experienceSources as |source index|}}
+                    <div class="source-row" data-index="{{index}}">
+                        <input type="text" class="source-description" value="{{source.description}}" placeholder="{{localize 'EXPERIENCE.SOURCE'}}" />
+                        <input type="number" class="source-amount" value="{{source.amount}}" min="1" placeholder="{{localize 'EXPERIENCE.AMOUNT'}}" />
+                        <button type="button" class="delete-source-btn" title="{{localize 'EXPERIENCE.DELETE_SOURCE'}}">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                {{/each}}
+            {{else}}
+                <div class="no-sources">
+                    <p>{{localize "EXPERIENCE.NO_SOURCES"}}</p>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

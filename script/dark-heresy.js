@@ -20,6 +20,7 @@ import { TalentSheet } from "./sheet/talent.js";
 import { SpecialAbilitySheet } from "./sheet/special-ability.js";
 import { AddSkillSpecialityDialog } from "./dialog/add-skill-speciality.js";
 import { EditSkillSpecialitiesDialog } from "./dialog/edit-skill-specialities.js";
+import { ExperienceTrackerDialog } from "./dialog/experience-tracker.js";
 import { TraitSheet } from "./sheet/trait.js";
 import { AptitudeSheet } from "./sheet/aptitude.js";
 import { initializeHandlebars } from "./common/handlebars.js";
@@ -55,7 +56,8 @@ Hooks.once("init", function() {
         },
         dialogs: {
             AddSkillSpecialityDialog,
-            EditSkillSpecialitiesDialog
+            EditSkillSpecialitiesDialog,
+            ExperienceTrackerDialog
         }
     };
     game.macro = DhMacroUtil;

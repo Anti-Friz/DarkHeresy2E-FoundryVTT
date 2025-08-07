@@ -1,0 +1,169 @@
+.experience-tracker-dialog {
+  .experience-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: #f0f0f0;
+    border-radius: 4px;
+
+    .summary-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      label {
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .total-experience, .remaining-experience {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .remaining-experience {
+        color: #2e7d32;
+      }
+    }
+  }
+
+  .experience-sources {
+    .sources-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      h3 {
+        margin: 0;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+      .add-source-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem 0.5rem;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9em;
+
+        &:hover {
+          background: #45a049;
+        }
+
+        i {
+          font-size: 0.8em;
+        }
+      }
+    }
+
+    .sources-list {
+      min-height: 100px;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.5rem;
+
+      .source-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .source-description {
+          flex: 2;
+          padding: 0.25rem;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          font-size: 0.9em;
+
+          &:focus {
+            outline: none;
+            border-color: #4CAF50;
+          }
+        }
+
+        .source-amount {
+          flex: 0 0 80px;
+          padding: 0.25rem;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          text-align: right;
+          font-size: 0.9em;
+
+          &:focus {
+            outline: none;
+            border-color: #4CAF50;
+          }
+        }
+
+        .delete-source-btn {
+          flex: 0 0 auto;
+          padding: 0.25rem 0.5rem;
+          background: #f44336;
+          color: white;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+          font-size: 0.8em;
+
+          &:hover {
+            background: #d32f2f;
+          }
+
+          i {
+            font-size: 0.8em;
+          }
+        }
+      }
+
+      .no-sources {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 2rem 1rem;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// Experience Tracker button in progression tab
+.experience-tracker {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: #2196F3;
+  color: white;
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: 0.8em;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #1976D2;
+    color: white;
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 0.9em;
+  }
+}

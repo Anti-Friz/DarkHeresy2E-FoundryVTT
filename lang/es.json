@@ -171,6 +171,14 @@
   "EXPERIENCE.SPENT_OTHER": "Gastado en Otro",
   "EXPERIENCE.TOTAL_SPENT": "Total Gastado",
   "EXPERIENCE.TOTAL": "Total",
+  "EXPERIENCE.REMAINING": "Restante",
+  "EXPERIENCE.TRACKER": "Rastreador de Experiencia",
+  "EXPERIENCE.SOURCE": "Fuente",
+  "EXPERIENCE.AMOUNT": "Cantidad",
+  "EXPERIENCE.ADD_SOURCE": "Agregar Fuente de Experiencia",
+  "EXPERIENCE.EDIT_SOURCES": "Editar Fuentes de Experiencia",
+  "EXPERIENCE.DELETE_SOURCE": "Eliminar Fuente",
+  "EXPERIENCE.NO_SOURCES": "Aún no se han registrado fuentes de experiencia.",
 
   "FATE": "Destino",
   "FATIGUE": "Fatiga",
@@ -374,5 +382,7 @@
   "WOUND.CRITICAL_INJURIES": "Heridas criticas",
   "WOUND.TOTAL": "Total",
   "WOUND.CURRENT": "Actual",
-  "WOUND.CRITICAL_DAMAGE": "Daño Critico"
+  "WOUND.CRITICAL_DAMAGE": "Daño Critico",
+
+  "NOTIFICATION.EXPERIENCE_TRACKER_SAVED": "Los datos del rastreador de experiencia se guardaron correctamente"
 }

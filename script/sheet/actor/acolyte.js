@@ -1,5 +1,6 @@
 import { DarkHeresySheet } from "./actor.js";
 import DarkHeresyUtil from "../../common/util.js";
+import { ExperienceTrackerDialog } from "../../dialog/experience-tracker.js";
 
 export class AcolyteSheet extends DarkHeresySheet {
 
@@ -41,6 +42,7 @@ export class AcolyteSheet extends DarkHeresySheet {
         html.find(".item-starter").click(async ev => { await this._onItemStarterClick(ev); });
         html.find(".add-skill-speciality").click(async ev => { await this._onAddSkillSpeciality(ev); });
         html.find(".edit-skill-specialities").click(async ev => { await this._onEditSkillSpecialities(ev); });
+        html.find(".experience-tracker").click(async ev => { await this._onExperienceTracker(ev); });
     }
 
     async _onAptitudeCreate(event) {
@@ -99,5 +101,17 @@ export class AcolyteSheet extends DarkHeresySheet {
         }
 
         await game.darkHeresy.dialogs.EditSkillSpecialitiesDialog.show(this.actor, skillKey, skillName);
+    }
+
+    /**
+     * Handles clicks on the Experience Tracker button.
+     * Opens the Experience Tracker dialog for the current actor.
+     * 
+     * @param {Event} event - The click event
+     * @returns {Promise<void>} Promise that resolves when dialog is closed
+     */
+    async _onExperienceTracker(event) {
+        event.preventDefault();
+        await ExperienceTrackerDialog.show(this.actor);
     }
 }
