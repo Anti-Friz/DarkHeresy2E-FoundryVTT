@@ -41,8 +41,17 @@ export class ExperienceTrackerDialog {
           }
         },
         default: "save",
-        render: (html) => this._activateListeners(html, actor),
+        render: (html) => {
+          // Add spent experience as data attribute for calculations
+          const element = html[0];
+          element.dataset.spentExperience = context.spentExperience || 0;
+          this._activateListeners(html, actor);
+        },
         close: () => resolve()
+      }, {
+        width: 600,
+        //resizable: true,
+        classes: ["dark-heresy"]
       });
       
       dialog.render(true);
@@ -58,30 +67,35 @@ export class ExperienceTrackerDialog {
   static _prepareDialogContext(actor) {
     const experienceSources = actor.system.experience.sources || [];
     const totalFromSources = experienceSources.reduce((total, source) => total + (source.amount || 0), 0);
+    const spentExperience = actor.system.experience.totalSpent || 0;
     
     return {
       experienceSources: experienceSources,
-      totalExperience: actor.system.experience.value || 0,
-      remainingExperience: actor.system.experience.remaining || 0,
-      totalFromSources: totalFromSources
+      totalExperience: totalFromSources,
+      remainingExperience: totalFromSources - spentExperience,
+      totalFromSources: totalFromSources,
+      spentExperience: spentExperience
     };
   }
 
   /**
    * Activates event listeners for the dialog.
    * 
-   * @param {HTMLElement} html - The dialog HTML content
+   * @param {jQuery} html - The dialog HTML content (jQuery object)
    * @param {DarkHeresyActor} actor - The actor being edited
    */
   static _activateListeners(html, actor) {
+    // Convert jQuery object to native DOM element
+    const element = html[0];
+
     // Add source button
-    html.querySelector('.add-source-btn').addEventListener('click', (event) => {
+    element.querySelector('.add-source-btn').addEventListener('click', (event) => {
       event.preventDefault();
       this._addExperienceSource(html, actor);
     });
 
     // Delete source buttons
-    html.querySelectorAll('.delete-source-btn').forEach(button => {
+    element.querySelectorAll('.delete-source-btn').forEach(button => {
       button.addEventListener('click', (event) => {
         event.preventDefault();
         this._deleteExperienceSource(event, html, actor);
@@ -89,7 +103,7 @@ export class ExperienceTrackerDialog {
     });
 
     // Update total when amounts change
-    html.querySelectorAll('.source-amount').forEach(input => {
+    element.querySelectorAll('.source-amount').forEach(input => {
       input.addEventListener('input', () => {
         this._updateTotalDisplay(html);
       });
@@ -99,11 +113,12 @@ export class ExperienceTrackerDialog {
   /**
    * Adds a new experience source row to the dialog.
    * 
-   * @param {HTMLElement} html - The dialog HTML content
+   * @param {jQuery} html - The dialog HTML content (jQuery object)
    * @param {DarkHeresyActor} actor - The actor being edited
    */
   static _addExperienceSource(html, actor) {
-    const sourcesList = html.querySelector('.sources-list');
+    const element = html[0]; // Convert jQuery to native DOM
+    const sourcesList = element.querySelector('.sources-list');
     const noSourcesMsg = sourcesList.querySelector('.no-sources');
     
     // Remove "no sources" message if present
@@ -148,7 +163,7 @@ export class ExperienceTrackerDialog {
    * Deletes an experience source row from the dialog.
    * 
    * @param {Event} event - The click event
-   * @param {HTMLElement} html - The dialog HTML content
+   * @param {jQuery} html - The dialog HTML content (jQuery object)
    * @param {DarkHeresyActor} actor - The actor being edited
    */
   static _deleteExperienceSource(event, html, actor) {
@@ -159,7 +174,8 @@ export class ExperienceTrackerDialog {
     this._updateTotalDisplay(html);
 
     // Check if we need to show "no sources" message
-    const sourcesList = html.querySelector('.sources-list');
+    const element = html[0]; // Convert jQuery to native DOM
+    const sourcesList = element.querySelector('.sources-list');
     const remainingSources = sourcesList.querySelectorAll('.source-row');
     
     if (remainingSources.length === 0) {
@@ -173,35 +189,51 @@ export class ExperienceTrackerDialog {
   /**
    * Updates the total experience display based on current source amounts.
    * 
-   * @param {HTMLElement} html - The dialog HTML content
+   * @param {jQuery} html - The dialog HTML content (jQuery object)
    */
   static _updateTotalDisplay(html) {
-    let total = 0;
+    let totalFromSources = 0;
+    const element = html[0]; // Convert jQuery to native DOM
     
-    html.querySelectorAll('.source-amount').forEach(element => {
-      const amount = parseInt(element.value) || 0;
-      total += amount;
+    element.querySelectorAll('.source-amount').forEach(input => {
+      const amount = parseInt(input.value) || 0;
+      totalFromSources += amount;
     });
 
-    // Update the total display (for future enhancement)
-    const totalFromSourcesElement = html.querySelector('.total-from-sources');
+    // Update the total from sources display
+    const totalFromSourcesElement = element.querySelector('.total-from-sources');
     if (totalFromSourcesElement) {
-      totalFromSourcesElement.textContent = total;
+      totalFromSourcesElement.textContent = totalFromSources;
+    }
+    
+    // Update total experience (total from sources becomes new total)
+    const totalExperienceElement = element.querySelector('.total-experience');
+    if (totalExperienceElement) {
+      totalExperienceElement.textContent = totalFromSources;
+    }
+    
+    // Calculate and update remaining experience
+    const spent = parseInt(element.dataset.spentExperience) || 0;
+    const remaining = totalFromSources - spent;
+    const remainingElement = element.querySelector('.remaining-experience');
+    if (remainingElement) {
+      remainingElement.textContent = remaining;
     }
   }
 
   /**
    * Saves the experience data from the dialog to the actor.
    * 
-   * @param {HTMLElement} html - The dialog HTML content
+   * @param {jQuery} html - The dialog HTML content (jQuery object)
    * @param {DarkHeresyActor} actor - The actor to update
    * @returns {Promise<void>} Promise that resolves when save is complete
    */
   static async _saveExperienceData(html, actor) {
     const sources = [];
+    const element = html[0]; // Convert jQuery to native DOM
     
     // Collect all source data
-    html.querySelectorAll('.source-row').forEach(row => {
+    element.querySelectorAll('.source-row').forEach(row => {
       const description = row.querySelector('.source-description').value.trim();
       const amount = parseInt(row.querySelector('.source-amount').value) || 0;
       
@@ -216,16 +248,15 @@ export class ExperienceTrackerDialog {
 
     // Calculate new total experience from sources
     const totalFromSources = sources.reduce((total, source) => total + source.amount, 0);
+    const spentExperience = actor.system.experience.totalSpent || 0;
+    const remainingExperience = totalFromSources - spentExperience;
     
     // Update actor data
     const updateData = {
-      "system.experience.sources": sources
+      "system.experience.sources": sources,
+      "system.experience.value": totalFromSources,
+      "system.experience.remaining": remainingExperience
     };
-
-    // If this is the first time setting up sources, migrate current experience value
-    if (!actor.system.experience.sources && totalFromSources > 0) {
-      updateData["system.experience.value"] = totalFromSources;
-    }
 
     await actor.update(updateData);
 
