@@ -33,7 +33,7 @@ export const addChatMessageContextOptions = function(html, options) {
     options.push(
         {
             name: game.i18n.localize("CHAT.CONTEXT.APPLY_DAMAGE"),
-            icon: '<i class="fas fa-user-minus"></i>',
+            icon: '<i class="fa-solid fa-user-minus"></i>',
             condition: canApply,
             callback: li => applyChatCardDamage(li)
         }

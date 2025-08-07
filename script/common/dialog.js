@@ -11,7 +11,7 @@ export async function prepareCommonRoll(rollData) {
         content: html,
         buttons: {
             roll: {
-                icon: '<i class="fas fa-check"></i>',
+                icon: '<i class="fa-solid fa-check"></i>',
                 label: game.i18n.localize("BUTTON.ROLL"),
                 callback: async html => {
                     if (rollData.flags?.isEvasion) {
@@ -32,7 +32,7 @@ export async function prepareCommonRoll(rollData) {
                 }
             },
             cancel: {
-                icon: '<i class="fas fa-times"></i>',
+                icon: '<i class="fa-solid fa-times"></i>',
                 label: game.i18n.localize("BUTTON.CANCEL"),
                 callback: () => {}
             }
@@ -68,7 +68,7 @@ export async function prepareCombatRoll(rollData, actorRef) {
             content: html,
             buttons: {
                 roll: {
-                    icon: '<i class="fas fa-check"></i>',
+                    icon: '<i class="fa-solid fa-check"></i>',
                     label: game.i18n.localize("BUTTON.ROLL"),
                     callback: async html => {
                         rollData.name = game.i18n.localize(rollData.name);
@@ -115,7 +115,7 @@ export async function prepareCombatRoll(rollData, actorRef) {
                     }
                 },
                 cancel: {
-                    icon: '<i class="fas fa-times"></i>',
+                    icon: '<i class="fa-solid fa-times"></i>',
                     label: game.i18n.localize("BUTTON.CANCEL"),
                     callback: () => {}
                 }
@@ -138,7 +138,7 @@ export async function preparePsychicPowerRoll(rollData) {
         content: html,
         buttons: {
             roll: {
-                icon: '<i class="fas fa-check"></i>',
+                icon: '<i class="fa-solid fa-check"></i>',
                 label: game.i18n.localize("BUTTON.ROLL"),
                 callback: async html => {
                     rollData.name = game.i18n.localize(rollData.name);
@@ -161,7 +161,7 @@ export async function preparePsychicPowerRoll(rollData) {
                 }
             },
             cancel: {
-                icon: '<i class="fas fa-times"></i>',
+                icon: '<i class="fa-solid fa-times"></i>',
                 label: game.i18n.localize("BUTTON.CANCEL"),
                 callback: () => {}
             }
