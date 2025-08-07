@@ -1,5 +1,52 @@
 export default class DarkHeresyUtil {
 
+    /**
+     * Default data structure for new specialities
+     */
+    static get DEFAULT_SPECIALITY_DATA() {
+        return {
+            advance: -20,
+            cost: 0,
+            starter: false
+        };
+    }
+
+    /**
+     * Show a localized error notification
+     * @param {string} key The localization key
+     * @param {object} data Optional data for string formatting
+     */
+    static notifyError(key, data = {}) {
+        const message = data && Object.keys(data).length > 0 
+            ? game.i18n.format(key, data) 
+            : game.i18n.localize(key);
+        ui.notifications.error(message);
+    }
+
+    /**
+     * Show a localized warning notification
+     * @param {string} key The localization key
+     * @param {object} data Optional data for string formatting
+     */
+    static notifyWarn(key, data = {}) {
+        const message = data && Object.keys(data).length > 0 
+            ? game.i18n.format(key, data) 
+            : game.i18n.localize(key);
+        ui.notifications.warn(message);
+    }
+
+    /**
+     * Show a localized info notification
+     * @param {string} key The localization key
+     * @param {object} data Optional data for string formatting
+     */
+    static notifyInfo(key, data = {}) {
+        const message = data && Object.keys(data).length > 0 
+            ? game.i18n.format(key, data) 
+            : game.i18n.localize(key);
+        ui.notifications.info(message);
+    }
+
     static createCommonAttackRollData(actor, item) {
         return {
             name: item.name,
@@ -291,5 +338,50 @@ export default class DarkHeresyUtil {
         }
 
         return key;
+    }
+
+    /**
+     * Create default speciality data with label
+     * @param {string} label The speciality label
+     * @returns {object} The speciality data object
+     */
+    static createSpecialityData(label) {
+        return {
+            label,
+            ...this.DEFAULT_SPECIALITY_DATA
+        };
+    }
+
+    /**
+     * Create a speciality row element for drag-and-drop editing
+     * @param {string} key The speciality key
+     * @param {string} label The speciality label/name
+     * @param {boolean} isOriginal Whether this is an original speciality
+     * @returns {HTMLElement} The created row element
+     */
+    static createSpecialityRow(key, label = "", isOriginal = false) {
+        const tr = document.createElement("tr");
+        tr.className = "speciality-row";
+        tr.setAttribute("data-speciality-key", key);
+        tr.setAttribute("data-original", isOriginal.toString());
+        tr.setAttribute("draggable", "true");
+        
+        const placeholder = isOriginal ? "" : game.i18n.localize("SKILL.ENTER_SPECIALITY_NAME");
+        
+        tr.innerHTML = `
+            <td class="drag-handle">
+                <i class="fa-solid fa-grip-vertical"></i>
+            </td>
+            <td>
+                <input type="text" class="speciality-name" value="${label}" placeholder="${placeholder}" />
+            </td>
+            <td class="actions">
+                <button class="delete-speciality-btn" type="button" title="${game.i18n.localize("BUTTON.DELETE")}">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </td>
+        `;
+        
+        return tr;
     }
 }

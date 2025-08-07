@@ -68,7 +68,7 @@ export class AddSkillSpecialityDialog {
         const specialityName = html.find("#speciality-name").val()?.trim();
 
         if (!specialityName) {
-            ui.notifications.error(game.i18n.localize("ERROR.SPECIALITY_NAME_REQUIRED"));
+            DarkHeresyUtil.notifyError("ERROR.SPECIALITY_NAME_REQUIRED");
             return;
         }
 
@@ -79,7 +79,7 @@ export class AddSkillSpecialityDialog {
         );
 
         if (existingSpeciality) {
-            ui.notifications.error(game.i18n.localize("ERROR.SPECIALITY_ALREADY_EXISTS"));
+            DarkHeresyUtil.notifyError("ERROR.SPECIALITY_ALREADY_EXISTS");
             return;
         }
 
@@ -87,12 +87,7 @@ export class AddSkillSpecialityDialog {
         const specialityKey = DarkHeresyUtil.generateSpecialityKey(specialityName, skill.specialities || {});
 
         // Create new speciality data
-        const newSpeciality = {
-            label: specialityName,
-            advance: -20,
-            cost: 0,
-            starter: false
-        };
+        const newSpeciality = DarkHeresyUtil.createSpecialityData(specialityName);
 
         // Update actor data
         const updatePath = `system.skills.${skillKey}.specialities.${specialityKey}`;
@@ -100,9 +95,9 @@ export class AddSkillSpecialityDialog {
             [updatePath]: newSpeciality
         });
 
-        ui.notifications.info(game.i18n.format("NOTIFICATION.SPECIALITY_ADDED", {
+        DarkHeresyUtil.notifyInfo("NOTIFICATION.SPECIALITY_ADDED", {
             speciality: specialityName,
             skill: skillName
-        }));
+        });
     }
 }

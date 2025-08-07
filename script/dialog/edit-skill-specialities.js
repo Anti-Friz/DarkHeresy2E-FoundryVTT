@@ -166,25 +166,8 @@ export class EditSkillSpecialitiesDialog {
             // Generate a unique key for the new row
             const newKey = `new_${Date.now()}_${Math.floor(Math.random()*10000)}`;
 
-            // Create a new row element
-            const tr = document.createElement("tr");
-            tr.className = "speciality-row";
-            tr.setAttribute("data-speciality-key", newKey);
-            tr.setAttribute("data-original", "false");
-            tr.setAttribute("draggable", "true");
-            tr.innerHTML = `
-                <td class="drag-handle">
-                    <i class="fa-solid fa-grip-vertical"></i>
-                </td>
-                <td>
-                    <input type="text" class="speciality-name" value="" placeholder="${game.i18n.localize("SKILL.ENTER_SPECIALITY_NAME")}" />
-                </td>
-                <td class="actions">
-                    <button class="delete-speciality-btn" type="button" title="${game.i18n.localize("BUTTON.DELETE")}">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </td>
-            `;
+            // Create a new row element using utility method
+            const tr = DarkHeresyUtil.createSpecialityRow(newKey, "", false);
             tbody.appendChild(tr);
 
             // Focus the new input
@@ -235,7 +218,7 @@ export class EditSkillSpecialitiesDialog {
             }
             if (names.includes(name.toLowerCase())) {
                 nameInput.style.borderColor = "#dc3545";
-                ui.notifications.error(game.i18n.format("ERROR.DUPLICATE_SPECIALITY_NAME", { name }));
+                DarkHeresyUtil.notifyError("ERROR.DUPLICATE_SPECIALITY_NAME", { name });
                 hasErrors = true;
                 return;
             }
@@ -260,12 +243,7 @@ export class EditSkillSpecialitiesDialog {
                 key = originalKey;
             } else {
                 // New speciality
-                specialityData = {
-                    label: name,
-                    advance: -20,
-                    cost: 0,
-                    starter: false
-                };
+                specialityData = DarkHeresyUtil.createSpecialityData(name);
                 // Generate a unique key in lowerCamelCase, avoiding collisions with current and new
                 const existingKeysObj = {
                     ...currentSpecialities,
@@ -361,6 +339,6 @@ export class EditSkillSpecialitiesDialog {
             [updatePath]: newSpecialities
         });
 
-        ui.notifications.info(game.i18n.localize("NOTIFICATION.SPECIALITIES_UPDATED"));
+        DarkHeresyUtil.notifyInfo("NOTIFICATION.SPECIALITIES_UPDATED");
     }
 }

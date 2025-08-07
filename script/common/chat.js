@@ -129,7 +129,7 @@ function onTestClick(ev) {
     let rollData = msg.getRollData();
 
     if (!actor) {
-        ui.notifications.warn(`${game.i18n.localize("NOTIFICATION.MACRO_ACTOR_NOT_FOUND")}`);
+        DarkHeresyUtil.notifyWarn("NOTIFICATION.MACRO_ACTOR_NOT_FOUND");
         return;
     }
     let evasions = {

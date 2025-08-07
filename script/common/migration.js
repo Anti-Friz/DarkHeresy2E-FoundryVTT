@@ -1,8 +1,10 @@
+import DarkHeresyUtil from "./util.js";
+
 export const migrateWorld = async () => {
     const schemaVersion = 6;
     const worldSchemaVersion = Number(game.settings.get("dark-heresy", "worldSchemaVersion"));
     if (worldSchemaVersion !== schemaVersion && game.user.isGM) {
-        ui.notifications.info("Upgrading the world, please wait...");
+        DarkHeresyUtil.notifyInfo("MIGRATION.UPGRADING_WORLD");
         for (let actor of game.actors.contents) {
             try {
                 const update = migrateActorData(actor, worldSchemaVersion);
@@ -18,7 +20,7 @@ export const migrateWorld = async () => {
             await migrateCompendium(pack, worldSchemaVersion);
         }
         game.settings.set("dark-heresy", "worldSchemaVersion", schemaVersion);
-        ui.notifications.info("Upgrade complete!");
+        DarkHeresyUtil.notifyInfo("MIGRATION.UPGRADE_COMPLETE");
     }
 };
 

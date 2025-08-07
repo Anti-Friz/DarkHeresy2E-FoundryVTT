@@ -34,11 +34,11 @@ export default class DhMacroUtil {
     static rollAttack(itemName, itemType) {
         let actor = this.getActor();
 
-        if (!actor) return ui.notifications.warn(`${game.i18n.localize("NOTIFICATION.MACRO_ACTOR_NOT_FOUND")}`);
+        if (!actor) return DarkHeresyUtil.notifyWarn("NOTIFICATION.MACRO_ACTOR_NOT_FOUND");
 
         let item = actor.items.find(i => i.name === itemName && i.type === itemType);
 
-        if (!item) return ui.notifications.warn(`${game.i18n.localize("NOTIFICATION.MACRO_ITEM_NOT_FOUND")} ${itemName}`);
+        if (!item) return DarkHeresyUtil.notifyWarn("NOTIFICATION.MACRO_ITEM_NOT_FOUND", { itemName });
 
         if (item.isPsychicPower) {
             this.rollPsychicPower(actor, item);
@@ -52,7 +52,7 @@ export default class DhMacroUtil {
     {
         let actor = this.getActor();
 
-        if (!actor) return ui.notifications.warn(`${game.i18n.localize("NOTIFICATION.MACRO_ACTOR_NOT_FOUND")}`);
+        if (!actor) return DarkHeresyUtil.notifyWarn("NOTIFICATION.MACRO_ACTOR_NOT_FOUND");
 
         let rollData;
 

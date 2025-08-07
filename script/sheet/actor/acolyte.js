@@ -1,4 +1,5 @@
 import { DarkHeresySheet } from "./actor.js";
+import DarkHeresyUtil from "../../common/util.js";
 
 export class AcolyteSheet extends DarkHeresySheet {
 
@@ -79,7 +80,7 @@ export class AcolyteSheet extends DarkHeresySheet {
         const skillName = target.data("skill-name");
 
         if (!skillKey || !skillName) {
-            ui.notifications.error(game.i18n.localize("ERROR.SKILL_DATA_MISSING"));
+            DarkHeresyUtil.notifyError("ERROR.SKILL_DATA_MISSING");
             return;
         }
 
@@ -93,7 +94,7 @@ export class AcolyteSheet extends DarkHeresySheet {
         const skillName = target.data("skill-name");
 
         if (!skillKey || !skillName) {
-            ui.notifications.error(game.i18n.localize("ERROR.SKILL_DATA_MISSING"));
+            DarkHeresyUtil.notifyError("ERROR.SKILL_DATA_MISSING");
             return;
         }
 
