@@ -2,7 +2,7 @@
     "id": "dark-heresy",
     "title": "Dark Heresy 2E AntiFriz Forked",
     "description": "Unofficial Foundry VTT System for Dark Heresy 2nd Edition.",
-    "version": "5.0.0 alpha",
+    "version": "5.0.1 alpha",
     "compatibility": {
         "minimum": 13,
         "verified": 13,
@@ -74,7 +74,7 @@
     "secondaryTokenAttribute": null,
     "url": "https://github.com/Anti-Friz/DarkHeresy2E-FoundryVTT",
     "socket": true,
-    "manifest": "https://github.com/Anti-Friz/DarkHeresy2E-FoundryVTT/releases/download/5.0.0-alpha/system.json",
-    "download": "https://github.com/Anti-Friz/DarkHeresy2E-FoundryVTT/releases/download/5.0.0-alpha/dark-heresy.zip",
+    "manifest": "https://github.com/Anti-Friz/DarkHeresy2E-FoundryVTT/releases/download/5.0.1-alpha/system.json",
+    "download": "https://github.com/Anti-Friz/DarkHeresy2E-FoundryVTT/releases/download/5.0.1-alpha/dark-heresy.zip",
     "license": "LICENSE.txt"
 }
