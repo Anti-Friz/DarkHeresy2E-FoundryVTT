@@ -1,9 +1,8 @@
 /**
  * Dialog for editing skill specialities with drag & drop functionality
  */
-/**
- * Dialog for editing skill specialities with drag & drop functionality
- */
+import DarkHeresyUtil from "../common/util.js";
+
 export class EditSkillSpecialitiesDialog {
     /**
      * Show the dialog for editing skill specialities.
@@ -205,31 +204,27 @@ export class EditSkillSpecialitiesDialog {
         html.on("keydown", ".speciality-name", event => {
             if (event.key === "Enter") {
                 event.preventDefault();
-                EditSkillSpecialitiesDialog._addSpecialityRow(html);
+                // Trigger add button click to reuse the logic
+                const addButton = html[0].querySelector(".add-skill-speciality");
+                if (addButton) {
+                    addButton.click();
+                }
             }
         });
     }
 
     /**
-     * Save all changes to the actor's skill specialities.
-     * @param {jQuery} html The dialog HTML.
-     * @param {Actor} actor The actor.
-     * @param {string} skillKey The skill key.
+     * Validate speciality names and collect data from rows.
+     * @param {NodeList} rows The speciality rows.
+     * @param {object} currentSpecialities Current specialities from actor.
+     * @returns {object} Object with newSpecialitiesArr and hasErrors.
      * @private
      */
-    static async _saveChanges(html, actor, skillKey) {
-        const skill = actor.system.skills[skillKey];
-        const currentSpecialities = skill.specialities || {};
-        // Use native DOM API to get all .speciality-row elements in order
-        const container = html[0] || html.get ? html[0] : html;
-        const rows = container.querySelectorAll(".speciality-row");
-
-        // Validate all speciality names
+    static _validateAndCollectSpecialities(rows, currentSpecialities) {
         const names = [];
         let hasErrors = false;
-
-        // Build new specialities array (ordered)
         const newSpecialitiesArr = [];
+
         rows.forEach(row => {
             const nameInput = row.querySelector(".speciality-name");
             const name = nameInput.value.trim();
@@ -276,46 +271,75 @@ export class EditSkillSpecialitiesDialog {
                     ...currentSpecialities,
                     ...Object.fromEntries(newSpecialitiesArr.map(s => [s.key, true]))
                 };
-                key = EditSkillSpecialitiesDialog._generateSpecialityKey(name, existingKeysObj);
+                key = DarkHeresyUtil.generateSpecialityKey(name, existingKeysObj);
             }
             newSpecialitiesArr.push({ key, data: specialityData });
         });
 
-        if (hasErrors) {
-            return;
-        }
+        return { newSpecialitiesArr, hasErrors };
+    }
 
-        // Compare with current: check for changes in keys, order, or labels
+    /**
+     * Check if specialities have changed compared to current state.
+     * @param {object} currentSpecialities Current specialities from actor.
+     * @param {Array} newSpecialitiesArr New specialities array.
+     * @returns {boolean} True if changes detected.
+     * @private
+     */
+    static _detectChanges(currentSpecialities, newSpecialitiesArr) {
         const currentKeys = Object.keys(currentSpecialities);
         const newKeys = newSpecialitiesArr.map(s => s.key);
-        let changed = false;
+
         // Check for removed or added
         if (
             currentKeys.length !== newKeys.length
             || !currentKeys.every(k => newKeys.includes(k))
             || !newKeys.every(k => currentKeys.includes(k))
         ) {
-            changed = true;
+            return true;
         }
+
         // Check for order change
-        if (!changed && currentKeys.length === newKeys.length) {
-            for (let i = 0; i < newKeys.length; i++) {
-                if (currentKeys[i] !== newKeys[i]) {
-                    changed = true;
-                    break;
-                }
+        for (let i = 0; i < newKeys.length; i++) {
+            if (currentKeys[i] !== newKeys[i]) {
+                return true;
             }
         }
+
         // Check for label changes
-        if (!changed) {
-            for (let i = 0; i < newSpecialitiesArr.length; i++) {
-                const { key, data } = newSpecialitiesArr[i];
-                if (!currentSpecialities[key] || currentSpecialities[key].label !== data.label) {
-                    changed = true;
-                    break;
-                }
+        for (let i = 0; i < newSpecialitiesArr.length; i++) {
+            const { key, data } = newSpecialitiesArr[i];
+            if (!currentSpecialities[key] || currentSpecialities[key].label !== data.label) {
+                return true;
             }
         }
+
+        return false;
+    }
+
+    /**
+     * Save all changes to the actor's skill specialities.
+     * @param {jQuery} html The dialog HTML.
+     * @param {Actor} actor The actor.
+     * @param {string} skillKey The skill key.
+     * @private
+     */
+    static async _saveChanges(html, actor, skillKey) {
+        const skill = actor.system.skills[skillKey];
+        const currentSpecialities = skill.specialities || {};
+        // Use native DOM API to get all .speciality-row elements in order
+        const container = html[0] || html.get ? html[0] : html;
+        const rows = container.querySelectorAll(".speciality-row");
+
+        // Validate and collect speciality data
+        const { newSpecialitiesArr, hasErrors } = EditSkillSpecialitiesDialog._validateAndCollectSpecialities(rows, currentSpecialities);
+
+        if (hasErrors) {
+            return;
+        }
+
+        // Check if anything has changed
+        const changed = EditSkillSpecialitiesDialog._detectChanges(currentSpecialities, newSpecialitiesArr);
 
         if (!changed) {
             // No changes, do not update
@@ -327,9 +351,9 @@ export class EditSkillSpecialitiesDialog {
         for (const { key, data } of newSpecialitiesArr) {
             newSpecialities[key] = data;
         }
-        debugger;
         // Update the actor with new specialities
         const updatePath = `system.skills.${skillKey}.specialities`;
+        //gross but works, otherwise it will not update properly
         await actor.update({
             [updatePath]: null
         });
@@ -338,39 +362,5 @@ export class EditSkillSpecialitiesDialog {
         });
 
         ui.notifications.info(game.i18n.localize("NOTIFICATION.SPECIALITIES_UPDATED"));
-    }
-
-    /**
-     * Generate a unique key for the speciality.
-     * @param {string} name The speciality name.
-     * @param {object} existingSpecialities Existing specialities object.
-     * @returns {string} The generated key.
-     * @private
-     */
-    /**
-     * Generate a unique key for the speciality in lowerCamelCase.
-     * @param {string} name The speciality name.
-     * @param {object} existingSpecialities Existing specialities object.
-     * @returns {string} The generated key in lowerCamelCase.
-     * @private
-     */
-    static _generateSpecialityKey(name, existingSpecialities) {
-        // Convert to lowerCamelCase: remove non-alphanum, capitalize words except first, join
-        const words = name.match(/[A-Za-z0-9]+/g) || [];
-        if (words.length === 0) return "speciality";
-        const baseKey = words
-            .map((w, i) => i === 0 ? w.charAt(0).toLowerCase() + w.slice(1) : w.charAt(0).toUpperCase() + w.slice(1))
-            .join("");
-        const existingKeys = Object.keys(existingSpecialities);
-
-        let key = baseKey;
-        let counter = 1;
-
-        while (existingKeys.includes(key)) {
-            key = `${baseKey}${counter}`;
-            counter++;
-        }
-
-        return key;
     }
 }

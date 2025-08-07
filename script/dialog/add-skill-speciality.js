@@ -1,6 +1,8 @@
 /**
  * Dialog for adding a skill speciality to an actor
  */
+import DarkHeresyUtil from "../common/util.js";
+
 export class AddSkillSpecialityDialog {
     /**
      * Show the dialog
@@ -82,7 +84,7 @@ export class AddSkillSpecialityDialog {
         }
 
         // Generate unique key for the new speciality
-        const specialityKey = AddSkillSpecialityDialog._generateSpecialityKey(specialityName, skill);
+        const specialityKey = DarkHeresyUtil.generateSpecialityKey(specialityName, skill.specialities || {});
 
         // Create new speciality data
         const newSpeciality = {
@@ -102,27 +104,5 @@ export class AddSkillSpecialityDialog {
             speciality: specialityName,
             skill: skillName
         }));
-    }
-
-    /**
-     * Generate a unique key for the speciality
-     * @param {string} name The speciality name
-     * @param {object} skill The skill object
-     * @returns {string} The generated key
-     * @private
-     */
-    static _generateSpecialityKey(name, skill) {
-        const baseKey = name.toLowerCase().replace(/[^a-z0-9]/g, "");
-        const existingKeys = Object.keys(skill.specialities || {});
-
-        let key = baseKey;
-        let counter = 1;
-
-        while (existingKeys.includes(key)) {
-            key = `${baseKey}${counter}`;
-            counter++;
-        }
-
-        return key;
     }
 }

@@ -259,4 +259,37 @@ export default class DarkHeresyUtil {
             return -20;
         }
     }
+
+    /**
+     * Generate a unique key for skill speciality in lowerCamelCase.
+     * @param {string} name The speciality name.
+     * @param {object} existingSpecialities Existing specialities object.
+     * @returns {string} The generated key in lowerCamelCase.
+     */
+    static generateSpecialityKey(name, existingSpecialities) {
+        // Convert to lowerCamelCase: remove non-alphanum, capitalize words except first, join
+        const words = name.match(/[A-Za-z0-9]+/g) || [];
+        if (words.length === 0) return "speciality";
+        
+        let baseKey = words
+            .map((w, i) => i === 0 ? w.charAt(0).toLowerCase() + w.slice(1) : w.charAt(0).toUpperCase() + w.slice(1))
+            .join("");
+        
+        // Ensure key starts with a letter to avoid JS object key sorting issues
+        if (/^[0-9]/.test(baseKey)) {
+            baseKey = "spec" + baseKey.charAt(0).toUpperCase() + baseKey.slice(1);
+        }
+        
+        const existingKeys = Object.keys(existingSpecialities);
+
+        let key = baseKey;
+        let counter = 1;
+
+        while (existingKeys.includes(key)) {
+            key = `${baseKey}${counter}`;
+            counter++;
+        }
+
+        return key;
+    }
 }
